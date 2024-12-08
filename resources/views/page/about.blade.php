@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+About Us
+@endsection
 @section('content')
 <!-- Hero Section -->
 <section class="hero about-bg">

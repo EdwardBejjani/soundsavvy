@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+Learn
+@endsection
 @section('content')
 <section class="hero learn-hero">
     <div class="feature-overlay">

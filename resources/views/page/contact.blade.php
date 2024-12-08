@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+Contact Us
+@endsection
 @section('content')
 <!-- Hero Section -->
 <section class="hero contact-bg">

@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+Login
+@endsection
 @section('content')
 <!-- Login Section -->
 <section class="login-section">

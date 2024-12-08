@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+{{$user->name}}
+@endsection
 @section('content')
 <section class="profile-section">
     <div class="container py-5">
@@ -51,7 +53,7 @@
                                 <div class="col-md-6 mb-3">
                                     <label class="form-label fw-bold text-light">Phone Number</label>
                                     <p class="form-control-plaintext dark-border">
-                                        {{ $user->phone_number ?? 'Not provided' }}
+                                        {{ $user->phone ?? 'Not provided' }}
                                     </p>
                                 </div>
                                 <div class="col-md-6 mb-3">

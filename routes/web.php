@@ -28,6 +28,10 @@ Route::get('/course', [DashboardController::class, 'course'])->name('course');
 
 Route::get('/cart', [DashboardController::class, 'cart'])->name('cart');
 
+Route::get('/checkout', [DashboardController::class, 'checkout'])->name('checkout');
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+
 // Authentication routes (Laravel Breeze/Jetstream)
 Route::middleware(['auth'])->group(function () {
     // Item Routes

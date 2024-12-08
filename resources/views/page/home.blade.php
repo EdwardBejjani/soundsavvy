@@ -1,6 +1,7 @@
 @extends('layout.layout')
-
-
+@section('title')
+Home
+@endsection
 @section('content')
 <!-- Hero Section -->
 <section class="hero home-bg">
@@ -54,13 +55,17 @@
         </div>
     </div>
 </section>
+@auth
 
+@endauth
+@guest
 <!-- CTA Section -->
 <section class="bg-primary text-white cta-section">
     <div class="container-fluid text-center py-5 cta-overlay">
         <h2 class="mb-4 pt-5">Ready to get started?</h2>
-        <p class="lead mb-4">Join thousands of satisfied customers today.</p>
+        <p class="lead mb-4">Join thousands of motivated musicians today.</p>
         <button class="btn btn-primary btn-lg">SIGN UP NOW</button>
     </div>
 </section>
+@endguest
 @endsection

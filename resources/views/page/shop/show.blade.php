@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+Shop
+@endsection
 @section('content')
 <!-- Shop Section -->
 <section class="shop-section">

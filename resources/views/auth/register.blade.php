@@ -1,5 +1,7 @@
 @extends('layout.layout')
-
+@section('title')
+Register
+@endsection
 @section('content')
 <!-- Register Section -->
 <section class="login-section">

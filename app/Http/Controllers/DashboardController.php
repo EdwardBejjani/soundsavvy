@@ -11,6 +11,10 @@ class DashboardController extends Controller
     {
         return view('page/home');
     }
+    public function dashboard()
+    {
+        return view('page/dashboard');
+    }
     public function about()
     {
         return view('page/about');
@@ -38,5 +42,9 @@ class DashboardController extends Controller
     public function cart()
     {
         return view('page/shop/cart');
+    }
+    public function login()
+    {
+        return view('auth/login');
     }
 }
