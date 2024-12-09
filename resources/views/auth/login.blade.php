@@ -3,6 +3,7 @@
 Login
 @endsection
 @section('content')
+
 <!-- Login Section -->
 <section class="login-section">
     <div class="container">

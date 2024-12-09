@@ -36,6 +36,12 @@
                 <li class="nav-item">
                     <a class="nav-link {{Route::is('profile') ? 'active': ''}}" href="{{Route('profile', Auth::user()->user_id)}}">{{Auth::user()->name}}</a>
                 </li>
+                @if (Auth::user()->role == 'admin')
+                @elseif (Auth::user()->role == 'vendor')
+                @elseif (Auth::user()->role == 'instructor')
+                @else
+                @endif
+
                 <li>
                     <form action="{{Route('logout')}}" method="POST">
                         @csrf
