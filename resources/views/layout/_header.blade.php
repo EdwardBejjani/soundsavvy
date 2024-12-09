@@ -37,9 +37,17 @@
                     <a class="nav-link {{Route::is('profile') ? 'active': ''}}" href="{{Route('profile', Auth::user()->user_id)}}">{{Auth::user()->name}}</a>
                 </li>
                 @if (Auth::user()->role == 'admin')
+                <li class="nav-item">
+                    <a class="nav-link {{Route::is('admin.dashboard') ? 'active': ''}}" href="{{Route('admin.dashboard')}}">Dashboard</a>
+                </li>
                 @elseif (Auth::user()->role == 'vendor')
+                <li class="nav-item">
+                    <a class="nav-link {{Route::is('vendor.dashboard') ? 'active': ''}}" href="{{Route('vendor.dashboard')}}">Dashboard</a>
+                </li>
                 @elseif (Auth::user()->role == 'instructor')
-                @else
+                <li class="nav-item">
+                    <a class="nav-link {{Route::is('instructor.dashboard') ? 'active': ''}}" href="{{Route('instructor.dashboard')}}">Dashboard</a>
+                </li>
                 @endif
 
                 <li>

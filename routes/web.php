@@ -1,12 +1,18 @@
 <?php
 
+use App\Http\Middleware\Instructor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\CourseController;
+use App\Http\Controllers\VendorController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InstructorController;
+use App\Http\Controllers\ProductController;
 
 Auth::routes();
 
@@ -32,30 +38,41 @@ Route::get('/checkout', [DashboardController::class, 'checkout'])->name('checkou
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-// Authentication routes (Laravel Breeze/Jetstream)
-Route::middleware(['auth'])->group(function () {
-    // Item Routes
-    Route::get('/items', [ItemController::class, 'index'])->name('items.index');
-    Route::get('/items/create', [ItemController::class, 'create'])->name('items.create');
-    Route::post('/items', [ItemController::class, 'store'])->name('items.store');
-    Route::get('/items/{item}', [ItemController::class, 'show'])->name('items.show');
-
-    // Cart Routes
-    // Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-    // Route::post('/cart/add', [CartController::class, 'add'])->name('cart.add');
-    // Route::delete('/cart/remove/{item}', [CartController::class, 'remove'])->name('cart.remove');
-
-    // Order Routes
-    Route::get('/checkout', [OrderController::class, 'checkout'])->name('orders.checkout');
-    Route::post('/orders', [OrderController::class, 'process'])->name('orders.process');
-    Route::get('/orders/confirmation/{order}', [OrderController::class, 'confirmation'])->name('orders.confirmation');
-    Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
-    Route::get('/orders/{order}', [OrderController::class, 'show'])->name('orders.show');
-
-    // Admin Routes
-    Route::middleware(['can:viewAdmin'])->prefix('admin')->group(function () {
-        Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
-        Route::get('/orders', [DashboardController::class, 'orders'])->name('admin.orders');
-        Route::get('/items', [DashboardController::class, 'itemManagement'])->name('admin.items');
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::prefix('users')->group(function () {
+        Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
+        Route::get('/new', [UserController::class, 'new'])->name('admin.users.new');
+        Route::post('/create', [UserController::class, 'create'])->name('admin.users.create');
+        Route::get('/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
+        Route::post('/{user}/update', [UserController::class, 'update'])->name('admin.users.update');
+        Route::get('/{user}/delete', [UserController::class, 'destroy'])->name('admin.users.destroy');
     });
+});
+
+Route::prefix('instructor')->group(function () {
+    Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');
+    Route::prefix('courses')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('instructor.courses.index');
+        Route::get('/new', [CourseController::class, 'new'])->name('instructor.courses.new');
+        Route::post('/create', [CourseController::class, 'create'])->name('instructor.courses.create');
+        Route::get('/{course}/edit', [CourseController::class, 'edit'])->name('instructor.courses.edit');
+        Route::post('/{course}/update', [CourseController::class, 'update'])->name('instructor.courses.update');
+        Route::get('/{course}/delete', [CourseController::class, 'destroy'])->name('instructor.courses.destroy');
+    });
+    Route::get('/orders', [InstructorController::class, 'index'])->name('instructor.orders');
+});
+
+Route::prefix('vendor')->group(function () {
+    Route::get('/dashboard', [VendorController::class, 'dashboard'])->name('vendor.dashboard');
+    Route::prefix('products')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('vendor.products.index');
+        Route::get('/new', [ProductController::class, 'new'])->name('vendor.products.new');
+        Route::post('/create', [ProductController::class, 'create'])->name('vendor.products.create');
+        Route::get('/{product}/edit', [ProductController::class, 'edit'])->name('vendor.products.edit');
+        Route::post('/{product}/update', [ProductController::class, 'update'])->name('vendor.products.update');
+        Route::get('/{product}/delete', [ProductController::class, 'destroy'])->name('vendor.products.destroy');
+    });
+    Route::get('/orders', [VendorController::class, 'index'])->name('vendor.orders');
+    Route::post('/orders/{order}/refund', [VendorController::class, 'refund'])->name('vendor.orders.refund');
 });

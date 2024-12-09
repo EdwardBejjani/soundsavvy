@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
             $table->string('type')->default('product');
             $table->string('name');
             $table->integer('price');
