@@ -1,0 +1,28 @@
+:root {
+    --primary-purple: #8a2be2;
+    --dark-purple: #4a148c;
+    --darker-purple: #170330;
+    --dark-bg: #121212;
+    --darker-bg: #0a0a0a;
+    --light-text: #e0e0e0;
+}
+
+.db-btn {
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.db-btn:hover {
+    color: var(--primary-purple);
+    transition: all 0.3s ease-in-out;
+    background-color: var(--darker-purple) !important;
+}
+
+.text-shadow {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.count-up {
+    font-size: 24px;
+    font-weight: bold;
+}
