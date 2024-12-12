@@ -6,14 +6,14 @@ Register
 <!-- Register Section -->
 <section class="login-section">
     <div class="container">
-        <div class="login-card">
+        <div class="login-card mb-5">
             <h2 class="text-center mb-4">Create Your Account</h2>
             <form action="{{route('register')}}" method="POST">
                 @csrf
                 <div class="row">
                     <div class="mb-3">
                         <label for="name" class="form-label">Name</label>
-                        <input type="text" class="form-control" id="name" name="name" required />
+                        <input type="text" class="form-control input mt-2" id="name" name="name" required />
                         @error('name')
                         <span class="fs-6 text-danger mt-2">{{ $message }}</span>
                         @enderror
@@ -21,7 +21,7 @@ Register
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="email" name="email" required />
+                    <input type="email" class="form-control input mt-2" id="email" name="email" required />
                     @error('email')
                     <span class="fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror
@@ -30,20 +30,20 @@ Register
                     <label for="password" class="form-label">Password</label>
                     <input
                         type="password"
-                        class="form-control"
+                        class="form-control input mt-2"
                         id="password"
                         name="password"
                         required />
                     @error('password')
                     <span class="fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror
-                    <div class="form-text text-color-primary">Must be at least 8 characters long</div>
+                    <div class="form-text text-color-primary mt-2">Must be at least 8 characters long</div>
                 </div>
                 <div class="mb-3">
                     <label for="password_confirmation" class="form-label">Confirm Password</label>
                     <input
                         type="password"
-                        class="form-control"
+                        class="form-control input mt-2"
                         id="password_confirmation"
                         name="password_confirmation"
                         required />
@@ -53,14 +53,14 @@ Register
                 </div>
                 <div class="mb-3">
                     <label for="phone" class="form-label">Phone</label>
-                    <input type="tel" class="form-control" id="phone" name="phone" required />
+                    <input type="tel" class="form-control input mt-2" id="phone" name="phone" required />
                     @error('phone')
                     <span class="fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="address" name="address" required />
+                    <input type="text" class="form-control input mt-2" id="address" name="address" required />
                     @error('address')
                     <span class="fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror

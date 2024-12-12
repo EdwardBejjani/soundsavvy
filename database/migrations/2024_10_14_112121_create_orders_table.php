@@ -16,7 +16,6 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('status');
             $table->integer('total_price');
-            $table->string('payment_method');
             $table->timestamps();
         });
     }

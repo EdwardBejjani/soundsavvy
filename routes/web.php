@@ -10,9 +10,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\VendorController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InstructorController;
-use App\Http\Controllers\ProductController;
 
 Auth::routes();
 
@@ -26,7 +27,7 @@ Route::get('/shop', [DashboardController::class, 'shop'])->name('shop');
 
 Route::get('/learn', [DashboardController::class, 'learn'])->name('learn');
 
-Route::get('profile', [UserController::class, 'profile'])->middleware('auth')->name('profile');
+Route::get('profile', [ProfileController::class, 'show'])->middleware('auth')->name('profile');
 
 Route::get('/item', [DashboardController::class, 'item'])->name('item');
 
@@ -42,11 +43,22 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
-        Route::get('/new', [UserController::class, 'new'])->name('admin.users.new');
-        Route::post('/create', [UserController::class, 'create'])->name('admin.users.create');
+        Route::get('/{user}', [UserController::class, 'show'])->name('admin.users.show');
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
         Route::post('/{user}/update', [UserController::class, 'update'])->name('admin.users.update');
         Route::get('/{user}/delete', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    });
+    Route::prefix('courses')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('admin.courses.index');
+        Route::get('/{course}', [CourseController::class, 'show'])->name('admin.courses.show');
+        Route::get('/{course}/edit', [CourseController::class, 'edit'])->name('admin.courses.edit');
+        Route::post('/{course}/update', [CourseController::class, 'update'])->name('admin.courses.update');
+        Route::get('/{course}/delete', [CourseController::class, 'destroy'])->name('admin.courses.destroy');
+    });
+    Route::prefix('orders')->group(function () {
+        Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
+        Route::get('/{order}', [OrderController::class, 'show'])->name('admin.orders.show');
+        Route::get('/{order}/refund', [OrderController::class, 'refund'])->name('admin.orders.refund');
     });
 });
 

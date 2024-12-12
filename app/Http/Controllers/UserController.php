@@ -9,36 +9,42 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        $users = User::all();
+        return view('dashboard.admin.users.index', compact('users'));
+    }
+
     public function show(User $user)
     {
-        return view('roles.user.profile', compact('user'));
+        return view('dashboard.admin.users.show', compact('user'));
+    }
+
+    public function new()
+    {
+        return view('dashboard.admin.users.new');
+    }
+
+    public function create(Request $request)
+    {
+        $user = User::create($request->all());
+        return redirect()->route('dashboard.admin.users.index');
     }
 
     public function edit(User $user)
     {
-        if (Auth::id() !== $user->user_id) {
-            abort(404);
-        }
-        $editing = true;
-        $posts = $user->posts()->paginate(5);
-
-        return view('users.edit', compact('user', 'editing', 'posts'));
+        return view('dashboard.admin.users.edit', compact('user'));
     }
 
-    public function update(User $user)
+    public function update(Request $request, User $user)
     {
-        $validated = request()->validate([
-            'name' => 'required|min:3|max:40',
-            'bio' => 'nullable|min:1|max:255'
-        ]);
-
-        $user->update($validated);
-
-        return redirect()->route('users.profile');
+        $user->update($request->all());
+        return redirect()->route('dashboard.admin.users.index');
     }
 
-    public function profile()
+    public function destroy(User $user)
     {
-        return $this->show(Auth::user());
+        $user->delete();
+        return redirect()->route('dashboard.admin.users.index');
     }
 }

@@ -8,14 +8,18 @@
 }
 
 .db-btn {
+    background-color: var(--dark-bg);
     color: white;
     transition: all 0.3s ease-in-out;
+    border: var(--primary-purple) solid 2px;
+    box-shadow: 0px 5px 15px rgba(138, 43, 226, 0.7) !important;
 }
 
 .db-btn:hover {
     color: var(--primary-purple);
     transition: all 0.3s ease-in-out;
     background-color: var(--darker-purple) !important;
+    box-shadow: 0px 10px 25px rgba(138, 43, 226, 0.7) !important;
 }
 
 .text-shadow {
@@ -25,4 +29,43 @@
 .count-up {
     font-size: 24px;
     font-weight: bold;
+}
+
+table {
+    text-align: center;
+    margin: 0 auto;
+    border-collapse: collapse;
+    border: 3px solid var(--darker-bg) !important;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.5rem;
+    background-color: var(--dark-bg);
+    border-radius: 10px !important;
+    border: var(--primary-purple) solid 2px;
+    box-shadow: 0px 5px 15px rgba(138, 43, 226, 0.7) !important;
+    color: var(--light-text);
+}
+
+.search-input:hover {
+    color: var(--primary-purple);
+    transition: all 0.3s ease-in-out;
+    background-color: var(--darker-purple) !important;
+    box-shadow: 0px 10px 25px rgba(138, 43, 226, 0.7) !important;
+}
+
+.search-input:focus {
+    color: var(--light-text);
+    transition: all 0.3s ease-in-out;
+    background-color: var(--darker-purple) !important;
+    box-shadow: 0px 10px 25px rgba(138, 43, 226, 0.7) !important;
+    border: var(--light-text) solid 2px;
+}
+
+.search-input::placeholder {
+    color: var(--light-text);
 }

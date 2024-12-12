@@ -7,20 +7,20 @@ Login
 <!-- Login Section -->
 <section class="login-section">
     <div class="container">
-        <div class="login-card">
+        <div class="login-card mb-5">
             <h2 class="text-center mb-4">Welcome Back!</h2>
             <form action="{{route('login')}}" method="POST">
                 @csrf
                 <div class="form-group mb-3">
-                    <label for="email" class="form-label">Email address</label>
-                    <input type="email" name="email" class="form-control" id="email" required />
+                    <label for="email" class="form-label text-white">Email address</label>
+                    <input type="email" name="email" class="form-control input mt-2" id="email" required />
                     @error('email')
                     <span class="fs-6 text-danger mt-2">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-group mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" id="password"
+                    <label for="password" class="form-label text-white">Password</label>
+                    <input type="password" name="password" class="form-control input mt-2" id="password"
                         required />
                     @error('password')
                     <span class="fs-6 text-danger mt-2">{{ $message }}</span>
