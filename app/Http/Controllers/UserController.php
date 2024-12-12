@@ -11,7 +11,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::where('role', '!=', 'admin')->filter()->paginate(1);
         return view('dashboard.admin.users.index', compact('users'));
     }
 
@@ -27,8 +27,23 @@ class UserController extends Controller
 
     public function create(Request $request)
     {
-        $user = User::create($request->all());
-        return redirect()->route('dashboard.admin.users.index');
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'address' => 'required',
+            'phone' => 'required',
+            'role' => 'required',
+            'password' => 'required|confirmed'
+        ]);
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address' => $request->address,
+            'phone' => $request->phone,
+            'role' => $request->role,
+            'password' => bcrypt($request->password)
+        ]);
+        return redirect()->route('admin.users.index')->with('success', 'User created successfully');
     }
 
     public function edit(User $user)
@@ -38,13 +53,20 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $user->id,
+            'address' => 'required',
+            'phone' => 'required',
+            'role' => 'required',
+        ]);
         $user->update($request->all());
-        return redirect()->route('dashboard.admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'User updated successfully');
     }
 
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->route('dashboard.admin.users.index');
+        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
     }
 }

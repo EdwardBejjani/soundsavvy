@@ -37,6 +37,7 @@
     <!-- Navigation -->
     @include('dashboard.layouts._header')
 
+    @include('layouts._notification')
     <!-- Content -->
     @yield('content')
 

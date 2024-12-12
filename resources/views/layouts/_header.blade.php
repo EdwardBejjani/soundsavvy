@@ -34,26 +34,27 @@
             @auth()
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('profile') ? 'active': ''}}" href="{{Route('profile', Auth::user()->user_id)}}">{{Auth::user()->name}}</a>
+
+                    <a class="btn btn-primary nav-link px-3 py-3 {{Route::is('profile') ? 'active': ''}}" title="Profile" href="{{Route('profile', Auth::user()->user_id)}}"><i class="fa-solid fa-user"></i></a>
                 </li>
                 @if (Auth::user()->role == 'admin')
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('admin.dashboard') ? 'active': ''}}" href="{{Route('admin.dashboard')}}">Dashboard</a>
+                    <a href="{{route('admin.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
                 </li>
                 @elseif (Auth::user()->role == 'vendor')
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('vendor.dashboard') ? 'active': ''}}" href="{{Route('vendor.dashboard')}}">Dashboard</a>
+                    <a href="{{route('vendor.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
                 </li>
                 @elseif (Auth::user()->role == 'instructor')
                 <li class="nav-item">
-                    <a class="nav-link {{Route::is('instructor.dashboard') ? 'active': ''}}" href="{{Route('instructor.dashboard')}}">Dashboard</a>
+                    <a href="{{route('instructor.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
                 </li>
                 @endif
 
                 <li>
                     <form action="{{Route('logout')}}" method="POST">
                         @csrf
-                        <button class="btn btn-primary nav-link px-3 py-3" type="submit">LOGOUT</button>
+                        <button class="btn btn-primary nav-link px-3 py-3" title="Logout" type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
                     </form>
                 </li>
             </ul>

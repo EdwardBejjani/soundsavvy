@@ -88,4 +88,25 @@ class User extends Authenticatable
     {
         return $this->name;
     }
+
+    public function scopeFilter($query)
+    {
+        if (request('name')) {
+            $query->where('name', 'like', '%' . request('name') . '%');
+        }
+        if (request('email')) {
+            $query->where('email', 'like', '%' . request('name') . '%');
+        }
+        if (request('role')) {
+            $query->where('role', 'like', '%' . request('role') . '%');
+        }
+        if (request('address')) {
+            $query->where('address', 'like', '%' . request('address') . '%');
+        }
+        if (request('phone')) {
+            $query->where('phone', 'like', '%' . request('phone') . '%');
+        }
+
+        return $query;
+    }
 }

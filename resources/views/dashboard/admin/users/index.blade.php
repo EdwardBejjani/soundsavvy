@@ -7,29 +7,21 @@ Users - Admin Dashboard
 <div class="home-bg min-vh-100 pt-3">
     <div class="container pt-5">
         <h1 class="text-center mt-5 text-shadow">Users</h1>
-        <div class="row justify-content-center mt-3">
-            <div class="col-md-6">
-                <form action="{{route('admin.users.index')}}" method="GET">
-                    @csrf
-                    <div class="input-group">
-                        <input type="text" class="form-control search-input" name="search" placeholder="Search for users by name or email" value="{{request()->query('search') ?? ''}}">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary ms-3" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="row gap-4 my-4 justify-content-center">
-            <div class="col-auto shadow rounded py-3 px-5 mb-3 text-center text-decoration-none db-btn" onclick="filterUsers('vendor')">
-                <h3 class="font-semibold text-shadow">Vendors</h3>
-            </div>
-            <div class="col-auto shadow rounded py-3 px-5 mb-3 text-center text-decoration-none db-btn" onclick="filterUsers('instructor')">
-                <h3 class="font-semibold text-shadow">Instructors</h3>
-            </div>
-            <div class="col-auto shadow rounded py-3 px-5 mb-3 text-center text-decoration-none db-btn" onclick="filterUsers('user')">
-                <h3 class="font-semibold text-shadow">Users</h3>
-            </div>
+        <div class="my-5">
+            <form action="{{route('admin.users.index')}}" method="GET" class="d-flex">
+                @csrf
+                <input type="text" class="form-control search-input mx-3" name="name" placeholder="Search by name" value="{{request()->query('name') ?? ''}}">
+                <input type="email" class="form-control search-input mx-3" name="email" placeholder="Search by email" value="{{request()->query('email') ?? ''}}">
+                <input type="text" class="form-control search-input mx-3" name="address" placeholder="Search by address" value="{{request()->query('address') ?? ''}}">
+                <input type="tel" class="form-control search-input mx-3" name="phone" placeholder="Search by phone" value="{{request()->query('phone') ?? ''}}">
+                <select name="role" id="role" class="form-select search-input">
+                    <option value="">All</option>
+                    <option value="vendor">Vendor</option>
+                    <option value="instructor">Instructor</option>
+                    <option value="user">User</option>
+                </select>
+                <button type="submit" class="btn btn-primary ms-3"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </form>
         </div>
         <div class="table-responsive" id="users">
             <table class="table table-bordered bg-dark">
@@ -44,9 +36,6 @@ Users - Admin Dashboard
                 </thead>
                 <tbody>
                     @foreach ($users as $user)
-                    @if ($user->role == 'admin')
-                    @continue
-                    @endif
                     <tr>
                         <td class="bg-dark text-white">{{ $user->id }}</td>
                         <td class="bg-dark text-white">{{ $user->name }}</td>
@@ -60,6 +49,11 @@ Users - Admin Dashboard
                     </tr>
                     @endforeach
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th class="bg-primary text-white" colspan="5">{{$users->links()}}</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>

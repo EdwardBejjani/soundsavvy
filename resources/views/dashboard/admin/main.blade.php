@@ -21,22 +21,10 @@ Admin Dashboard
                 <p class="text-2xl mt-2 text-shadow count-up  mb-1">5746</p>
             </a>
         </div>
-        <h2 class="text-center mt-4 text-shadow">Financial Management</h2>
-        <div class="row gap-4 mt-4 justify-content-center">
-            <a href="#" class="col-auto shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
-                <h3 class="font-semibold text-shadow">Payments</h3>
-            </a>
-            <a href="#" class="col-auto shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
-                <h3 class="font-semibold text-shadow">Reports</h3>
-            </a>
-        </div>
         <h2 class="text-center mt-4 text-shadow">Communication Tools</h2>
         <div class="row gap-4 mt-4 justify-content-center pb-5">
             <a href="#" class="col-auto shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
                 <h3 class="font-semibold text-shadow">E-mail</h3>
-            </a>
-            <a href="#" class="col-auto shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
-                <h3 class="font-semibold text-shadow">Notifications</h3>
             </a>
         </div>
     </div>

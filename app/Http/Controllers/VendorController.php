@@ -11,4 +11,8 @@ class VendorController extends Controller
         $this->middleware('auth');
         $this->middleware('vendor');
     }
+    public function dashboard()
+    {
+        return view('dashboard.vendor.main');
+    }
 }

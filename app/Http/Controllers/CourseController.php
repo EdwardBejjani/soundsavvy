@@ -29,7 +29,7 @@ class CourseController extends Controller
         } elseif (Auth::user()->role == 'instructor') {
             return view('dashboard.instructor.courses.show', compact('item'));
         } else {
-            return view('courses.show', compact('course'));
+            return view('courses.show', compact('item'));
         }
     }
 
