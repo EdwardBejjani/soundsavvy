@@ -8,18 +8,17 @@ Admin Dashboard
     <div class="container pt-5">
         <h1 class="text-center mt-5 text-shadow">Admin Dashboard</h1>
         <div class="row gap-4 mt-4 justify-content-center">
-            <a href="#" class="col-auto bg-dark shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
+            <a href="#" class="col-auto bg-dark shadow rounded pt-4 pb-2 px-5 mb-3 text-center text-decoration-none db-btn">
                 <h3 class="font-semibold text-shadow">Total Users</h3>
-                <p class="text-2xl mt-2 text-shadow count-up">59431</p>
-                </p>
+                <p class="text-2xl mt-2 text-shadow count-up mb-1">59431</p>
             </a>
-            <a href="#" class="col-auto bg-dark shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
+            <a href="#" class="col-auto bg-dark shadow rounded pt-4 pb-2 px-5 mb-3 text-center text-decoration-none db-btn">
                 <h3 class="font-semibold text-shadow">Total Courses</h3>
                 <p class="text-2xl mt-2 text-shadow count-up">54</p>
             </a>
-            <a href="#" class="col-auto bg-dark shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
+            <a href="#" class="col-auto bg-dark shadow rounded pt-4 pb-2 px-5 mb-3 text-center text-decoration-none db-btn">
                 <h3 class="font-semibold text-shadow">Total Orders</h3>
-                <p class="text-2xl mt-2 text-shadow count-up">5746</p>
+                <p class="text-2xl mt-2 text-shadow count-up  mb-1">5746</p>
             </a>
         </div>
         <h2 class="text-center mt-4 text-shadow">Financial Management</h2>
