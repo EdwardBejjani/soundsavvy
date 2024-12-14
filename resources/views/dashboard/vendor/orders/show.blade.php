@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 @section('title')
-Order #: {{ $order->id }} - Admin Dashboard
+Order #: {{ $order->id }} - Vendor Dashboard
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@ Order #: {{ $order->id }} - Admin Dashboard
                     <p class="lead mb-3"><span class="fw-bold">Order ID:</span> {{$order->id}}</p>
                     <p class="lead mb-3"><span class="fw-bold">User ID:</span> {{$order->user_id}}</p>
                     <p class="lead mb-3"><span class="fw-bold">Date:</span> {{$order->created_at->format('Y-m-d')}}</p>
-                    <p class="lead mb-3"><span class="fw-bold">Ststus:</span> {{$order->status}}</p>
+                    <p class="lead mb-3"><span class="fw-bold">Status:</span> {{$order->status}}</p>
                     <p class="lead mb-3"><span class="fw-bold">Total Price:</span> {{$order->total_price}}</p>
                 </div>
             </div>

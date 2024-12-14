@@ -38,4 +38,21 @@ class Item extends Model
     {
         $this->decrement('stock', $quantity);
     }
+    public function scopeFilter($query)
+    {
+        if (request('name')) {
+            $query->where('name', 'like', '%' . request('name') . '%');
+        }
+        if (request('category')) {
+            $query->where('category_id', 'like', '%' . request('category') . '%');
+        }
+        if (request('type')) {
+            $query->where('type', 'like', '%' . request('type') . '%');
+        }
+        if (request('sku')) {
+            $query->where('sku', 'like', '%' . request('sku') . '%');
+        }
+
+        return $query;
+    }
 }

@@ -1,7 +1,13 @@
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container pt-2">
         <a href="{{route('home')}}" class="btn btn-primary nav-link ms-3 px-3 py-3" title="Home"><i class="fa-solid fa-house"></i></a>
-        <a href="{{route('admin.dashboard')}}" class="btn btn-primary nav-link ms-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
+        @if (Auth::user()->role == 'admin')
+        <a href="{{route('admin.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
+        @elseif (Auth::user()->role == 'vendor')
+        <a href="{{route('vendor.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
+        @elseif (Auth::user()->role == 'instructor')
+        <a href="{{route('instructor.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
+        @endif
         <button
             class="navbar-toggler"
             type="button"

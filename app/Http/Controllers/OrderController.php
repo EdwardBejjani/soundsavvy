@@ -14,10 +14,10 @@ class OrderController extends BaseController
     public function index()
     {
         if (Auth::user()->role == 'admin') {
-            $orders = Order::all();
+            $orders = Order::all()->paginate(10);
             return view('dashboard.admin.orders.index', compact('orders'));
         } elseif (Auth::user()->role == 'vendor') {
-            $orders = Order::where('user_id', Auth::id())->get();
+            $orders = Order::where('user_id', Auth::id())->paginate(10);
             return view('dashboard.vendor.orders.index', compact('orders'));
         } else {
             $orders = Order::where('user_id', Auth::id())->get();

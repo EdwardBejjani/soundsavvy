@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('instructor')->only('new', 'create', 'destroy');
+    }
     public function index()
     {
         if (Auth::user()->role == 'admin') {
-            $items = Item::all();
+            $items = Item::where('type', '=', 'course')->filter()->paginate(10);
             return view('dashboard.admin.courses.index', compact('items'));
         } elseif (Auth::user()->role == 'instructor') {
             $items = Item::where('user_id', Auth::id())->get();
@@ -40,6 +45,14 @@ class CourseController extends Controller
 
     public function create(Request $request)
     {
+        $request->validate([
+            'title' => 'required | min:3 | max:50',
+            'description' => 'required | min:10 | max:300',
+            'image' => 'required',
+            'price' => 'required | min:1',
+            'category_id' => 'required | exists:categories,id',
+            'SKU' => 'required',
+        ]);
         $data = $request->all();
         Item::create($data);
         return redirect()->route('instructor.courses.index');
@@ -56,6 +69,14 @@ class CourseController extends Controller
 
     public function update(Request $request, Item $item)
     {
+        $request->validate([
+            'title' => 'required | min:3 | max:50',
+            'description' => 'required | min:10 | max:300',
+            'image' => 'required',
+            'price' => 'required | min:1',
+            'category_id' => 'required | exists:categories,id',
+            'SKU' => 'required',
+        ]);
         $data = $request->all();
         $item->update($data);
         if (Auth::user()->role == 'admin') {

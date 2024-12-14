@@ -9,41 +9,21 @@ use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('admin');
+    }
+
     public function index()
     {
-        $users = User::where('role', '!=', 'admin')->filter()->paginate(1);
+        $users = User::where('role', '!=', 'admin')->filter()->paginate(10);
         return view('dashboard.admin.users.index', compact('users'));
     }
 
     public function show(User $user)
     {
         return view('dashboard.admin.users.show', compact('user'));
-    }
-
-    public function new()
-    {
-        return view('dashboard.admin.users.new');
-    }
-
-    public function create(Request $request)
-    {
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'address' => 'required',
-            'phone' => 'required',
-            'role' => 'required',
-            'password' => 'required|confirmed'
-        ]);
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'address' => $request->address,
-            'phone' => $request->phone,
-            'role' => $request->role,
-            'password' => bcrypt($request->password)
-        ]);
-        return redirect()->route('admin.users.index')->with('success', 'User created successfully');
     }
 
     public function edit(User $user)
@@ -66,6 +46,9 @@ class UserController extends Controller
 
     public function destroy(User $user)
     {
+        if ($user->orders()->count() > 0) {
+            return redirect()->back()->with('error', 'User has orders');
+        }
         $user->delete();
         return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
     }

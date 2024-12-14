@@ -69,3 +69,13 @@ table {
 .search-input::placeholder {
     color: var(--light-text);
 }
+
+.compose-box {
+    background-color: var(--dark-bg);
+    color: white;
+    transition: all 0.3s ease-in-out;
+    border: var(--primary-purple) solid 2px;
+    box-shadow: 0px 5px 15px rgba(138, 43, 226, 0.7) !important;
+    padding: 25px;
+    border-radius: 20px;
+}

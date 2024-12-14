@@ -52,14 +52,14 @@ class DashboardController extends Controller
             ]);
         }
 
-        $orders = $query->paginate(20);
+        $orders = $query->paginate(10);
 
         return view('admin.orders.index', compact('orders'));
     }
 
     public function itemManagement()
     {
-        $items = Item::with('category')->paginate(20);
+        $items = Item::with('category')->paginate(10);
         return view('admin.items.index', compact('items'));
     }
 }

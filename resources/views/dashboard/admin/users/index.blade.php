@@ -10,11 +10,11 @@ Users - Admin Dashboard
         <div class="my-5">
             <form action="{{route('admin.users.index')}}" method="GET" class="d-flex">
                 @csrf
-                <input type="text" class="form-control search-input mx-3" name="name" placeholder="Search by name" value="{{request()->query('name') ?? ''}}">
-                <input type="email" class="form-control search-input mx-3" name="email" placeholder="Search by email" value="{{request()->query('email') ?? ''}}">
-                <input type="text" class="form-control search-input mx-3" name="address" placeholder="Search by address" value="{{request()->query('address') ?? ''}}">
-                <input type="tel" class="form-control search-input mx-3" name="phone" placeholder="Search by phone" value="{{request()->query('phone') ?? ''}}">
-                <select name="role" id="role" class="form-select search-input">
+                <input type="text" class="form-control search-input" name="name" placeholder="Search by name" value="{{request()->query('name') ?? ''}}">
+                <input type="email" class="form-control search-input ms-3" name="email" placeholder="Search by email" value="{{request()->query('email') ?? ''}}">
+                <input type="text" class="form-control search-input ms-3" name="address" placeholder="Search by address" value="{{request()->query('address') ?? ''}}">
+                <input type="tel" class="form-control search-input ms-3" name="phone" placeholder="Search by phone" value="{{request()->query('phone') ?? ''}}">
+                <select name="role" id="role" class="form-select search-input ms-3">
                     <option value="">All</option>
                     <option value="vendor">Vendor</option>
                     <option value="instructor">Instructor</option>
@@ -51,7 +51,7 @@ Users - Admin Dashboard
                 </tbody>
                 <tfoot>
                     <tr>
-                        <th class="bg-primary text-white" colspan="5">{{$users->links()}}</th>
+                        <th class="bg-primary text-white pgn" colspan="5">{{$users->links()}}</th>
                     </tr>
                 </tfoot>
             </table>

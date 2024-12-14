@@ -47,27 +47,27 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    const ROLE_CUSTOMER = 'customer';
+    const ROLE_INSTRUCTOR = 'instructor';
     const ROLE_ADMIN = 'admin';
     const ROLE_VENDOR = 'vendor';
-    public function ideas()
-    {
-        return $this->hasMany(Post::class)->latest();
-    }
+    // public function ideas()
+    // {
+    //     return $this->hasMany(Post::class)->latest();
+    // }
 
-    public function comments()
-    {
-        return $this->hasMany(Comment::class);
-    }
+    // public function comments()
+    // {
+    //     return $this->hasMany(Comment::class);
+    // }
 
-    public function likes()
-    {
-        return $this->belongsToMany(Post::class, 'post_like')->withTimestamps();
-    }
-    public function likesPost(Post $post)
-    {
-        return $this->likes()->where('post_id', $post->id)->exists();
-    }
+    // public function likes()
+    // {
+    //     return $this->belongsToMany(Post::class, 'post_like')->withTimestamps();
+    // }
+    // public function likesPost(Post $post)
+    // {
+    //     return $this->likes()->where('post_id', $post->id)->exists();
+    // }
 
     public function orders()
     {
@@ -84,10 +84,17 @@ class User extends Authenticatable
         return $this->role === self::ROLE_VENDOR;
     }
 
+    public function isInstructor()
+    {
+        return $this->role === self::ROLE_INSTRUCTOR;
+    }
+
     public function getFullNameAttribute()
     {
         return $this->name;
     }
+
+
 
     public function scopeFilter($query)
     {

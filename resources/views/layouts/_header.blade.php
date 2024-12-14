@@ -34,7 +34,6 @@
             @auth()
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-
                     <a class="btn btn-primary nav-link px-3 py-3 {{Route::is('profile') ? 'active': ''}}" title="Profile" href="{{Route('profile', Auth::user()->user_id)}}"><i class="fa-solid fa-user"></i></a>
                 </li>
                 @if (Auth::user()->role == 'admin')
@@ -50,7 +49,6 @@
                     <a href="{{route('instructor.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
                 </li>
                 @endif
-
                 <li>
                     <form action="{{Route('logout')}}" method="POST">
                         @csrf

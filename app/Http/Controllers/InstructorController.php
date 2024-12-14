@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class InstructorController extends Controller
 {
@@ -10,5 +11,10 @@ class InstructorController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('instructor');
+    }
+    public function dashboard()
+    {
+        $users = User::where('role', '!=', 'admin')->paginate(10);
+        return view('dashboard.instructor.index', compact('users'));
     }
 }
