@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -41,43 +42,55 @@ class ProductController extends Controller
 
     public function new()
     {
-        return view('dashboard.vendor.products.new');
+        $categories = Category::all();
+        return view('dashboard.vendor.products.new', compact('categories'));
     }
 
     public function create(Request $request)
     {
+        $request->validate([
+            'name' => 'required | min:3 | max:50',
+            'description' => 'required | min:10 | max:300',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'price' => 'required | min:1',
+            'category_id' => 'required | exists:categories,id',
+            'sku' => 'required',
+        ]);
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('images', 'public');
+        }
         $data = $request->all();
         Item::create($data);
-        return redirect()->route('vendor.products.index');
+        return redirect()->back()->with('success', 'Product Created Successfully')->with('image_path', $path);
     }
 
     public function edit(Item $item)
     {
-        if (Auth::user()->role == 'admin') {
-            return view('dashboard.admin.products.edit', compact('item'));
-        } elseif (Auth::user()->role == 'vendor') {
-            return view('dashboard.vendor.products.edit', compact('item'));
-        }
+        $categories = Category::all();
+        return view('dashboard.vendor.products.edit', compact('item', 'categories'));
     }
 
     public function update(Request $request, Item $item)
     {
+        $request->validate([
+            'name' => 'required | min:3 | max:50',
+            'description' => 'required | min:10 | max:300',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'price' => 'required | min:1',
+            'category_id' => 'required | exists:categories,id',
+            'sku' => 'required',
+        ]);
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('images', 'public');
+        }
         $data = $request->all();
         $item->update($data);
-        if (Auth::user()->role == 'admin') {
-            return redirect()->route('admin.products.index');
-        } elseif (Auth::user()->role == 'vendor') {
-            return redirect()->route('vendor.products.index');
-        }
+        return redirect()->route('vendor.products.index');
     }
 
     public function destroy(Item $item)
     {
         $item->delete();
-        if (Auth::user()->role == 'admin') {
-            return redirect()->route('admin.products.index');
-        } elseif (Auth::user()->role == 'vendor') {
-            return redirect()->route('vendor.products.index');
-        }
+        return redirect()->route('vendor.products.index');
     }
 }

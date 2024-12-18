@@ -8,7 +8,7 @@ Edit Product - Vendor Dashboard
     <div class="container py-5">
         <div class="login-card mt-5 text-center">
             <h1 class="text-center text-shadow">Edit Product</h1>
-            <form action="{{route('admin.courses.update', $item->id)}}" method="POST">
+            <form action="{{route('vendor.products.update', $item->id)}}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Product Name</label>
@@ -17,6 +17,15 @@ Edit Product - Vendor Dashboard
                 <div class="mb-3">
                     <label for="description" class="form-label">Description</label>
                     <textarea class="form-control" id="description" name="description" rows="3">{{$item->description}}</textarea>
+                </div>
+                <div class="mb-3">
+                    <label for="category" class="form-label">Category</label>
+                    <select name="category_id" id="category_id">
+                        <option value=""></option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}" {{$item->category_id==$category->id ? 'selected' : ''}}>{{$category->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="mb-3">
                     <label for="sku" class="form-label">SKU</label>

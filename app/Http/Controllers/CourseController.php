@@ -12,7 +12,7 @@ class CourseController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('instructor')->only('new', 'create', 'destroy');
+        $this->middleware('instructor')->only('new', 'create', 'edit', 'update', 'destroy');
     }
     public function index()
     {
@@ -62,11 +62,7 @@ class CourseController extends Controller
 
     public function edit(Item $item)
     {
-        if (Auth::user()->role == 'admin') {
-            return view('dashboard.admin.courses.edit', compact('item'));
-        } elseif (Auth::user()->role == 'instructor') {
-            return view('dashboard.instructor.courses.edit', compact('item'));
-        }
+        return view('dashboard.instructor.courses.edit', compact('item'));
     }
 
     public function update(Request $request, Item $item)
@@ -81,20 +77,12 @@ class CourseController extends Controller
         ]);
         $data = $request->all();
         $item->update($data);
-        if (Auth::user()->role == 'admin') {
-            return redirect()->route('admin.courses.index');
-        } elseif (Auth::user()->role == 'instructor') {
-            return redirect()->route('instructor.courses.index');
-        }
+        return redirect()->route('instructor.courses.index');
     }
 
     public function destroy(Item $item)
     {
         $item->delete();
-        if (Auth::user()->role == 'admin') {
-            return redirect()->route('admin.courses.index');
-        } elseif (Auth::user()->role == 'instructor') {
-            return redirect()->route('instructor.courses.index');
-        }
+        return redirect()->route('instructor.courses.index');
     }
 }

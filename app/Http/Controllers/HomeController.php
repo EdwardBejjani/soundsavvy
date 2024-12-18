@@ -2,27 +2,38 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function home()
     {
-        $this->middleware('auth');
+        return view('page/home');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+    public function about()
     {
-        return view('home');
+        return view('page/about');
+    }
+    public function contact()
+    {
+        return view('page/contact');
+    }
+    public function shop()
+    {
+        $items = Item::where('type', 'product')->paginate(12);
+        return view('page/shop/show', compact('items'));
+    }
+    public function learn()
+    {
+        return view('page/learn/show');
+    }
+    public function product(Item $item)
+    {
+        return view('page/shop/item', compact('item'));
+    }
+    public function course(Item $item)
+    {
+        return view('page/learn/course', compact('item'));
     }
 }

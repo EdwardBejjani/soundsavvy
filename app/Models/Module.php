@@ -9,9 +9,5 @@ class Module extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'title',
-        'description',
-        'link'
-    ];
+    protected $guarded = [];
 }

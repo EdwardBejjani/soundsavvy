@@ -9,13 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'user_id',
-        'total_amount',
-        'status',
-        'shipping_address',
-        'billing_address'
-    ];
+    protected $guarded = [];
 
     // Order statuses
     const STATUS_PENDING = 'pending';

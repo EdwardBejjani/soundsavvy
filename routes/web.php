@@ -1,10 +1,8 @@
 <?php
 
-use App\Http\Middleware\Instructor;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CartController;
-use App\Http\Controllers\ItemController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
@@ -13,30 +11,31 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InstructorController;
 
 Auth::routes();
 
-Route::get('/', [DashboardController::class, 'home'])->name('home');
+Route::get('/', [HomeController::class, 'home'])->name('home');
 
-Route::get('/about', [DashboardController::class, 'about'])->name('about');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-Route::get('/contact', [DashboardController::class, 'contact'])->name('contact');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
-Route::get('/shop', [DashboardController::class, 'shop'])->name('shop');
+Route::post('/contact/send', [HomeController::class, 'contact_send'])->name('contact.send');
 
-Route::get('/learn', [DashboardController::class, 'learn'])->name('learn');
+Route::get('/shop', [HomeController::class, 'shop'])->name('shop');
+
+Route::get('/learn', [HomeController::class, 'learn'])->name('learn');
 
 Route::get('profile', [ProfileController::class, 'show'])->middleware('auth')->name('profile');
 
-Route::get('/item', [DashboardController::class, 'item'])->name('item');
+Route::get('/products/{item}', [HomeController::class, 'product'])->name('item');
 
-Route::get('/course', [DashboardController::class, 'course'])->name('course');
+Route::get('/courses/{item}', [HomeController::class, 'course'])->name('course');
 
-Route::get('/cart', [DashboardController::class, 'cart'])->name('cart');
+Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
-Route::get('/checkout', [DashboardController::class, 'checkout'])->name('checkout');
+Route::post('/order', [HomeController::class, 'order'])->name('order');
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
@@ -54,9 +53,6 @@ Route::prefix('admin')->group(function () {
     Route::prefix('courses')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('admin.courses.index');
         Route::get('/{item}/show', [CourseController::class, 'show'])->name('admin.courses.show');
-        Route::get('/{item}/edit', [CourseController::class, 'edit'])->name('admin.courses.edit');
-        Route::post('/{item}/update', [CourseController::class, 'update'])->name('admin.courses.update');
-        Route::get('/{item}/delete', [CourseController::class, 'destroy'])->name('admin.courses.destroy');
     });
     Route::prefix('orders')->group(function () {
         Route::get('/', [OrderController::class, 'index'])->name('admin.orders.index');
@@ -71,13 +67,13 @@ Route::prefix('instructor')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('instructor.courses.index');
         Route::get('/new', [CourseController::class, 'new'])->name('instructor.courses.new');
         Route::post('/create', [CourseController::class, 'create'])->name('instructor.courses.create');
+        Route::get('/{item}/show', [CourseController::class, 'show'])->name('instructor.courses.show');
         Route::get('/{item}/edit', [CourseController::class, 'edit'])->name('instructor.courses.edit');
         Route::post('/{item}/update', [CourseController::class, 'update'])->name('instructor.courses.update');
         Route::get('/{item}/delete', [CourseController::class, 'destroy'])->name('instructor.courses.destroy');
-        Route::prefix('/{item}')->group(function () {
-            Route::get('/show', [CourseController::class, 'show'])->name('instructor.courses.show');
-            Route::get('/module/new', [ModuleController::class, 'new'])->name('instructor.courses.modules.new');
-            Route::post('/module/create', [ModuleController::class, 'create'])->name('instructor.courses.modules.create');
+        Route::prefix('/{item}/modules')->group(function () {
+            Route::get('/new', [ModuleController::class, 'new'])->name('instructor.courses.modules.new');
+            Route::post('/create', [ModuleController::class, 'create'])->name('instructor.courses.modules.create');
             Route::get('/{module}', [ModuleController::class, 'show'])->name('instructor.courses.modules.show');
             Route::get('/{module}/edit', [ModuleController::class, 'edit'])->name('instructor.courses.modules.edit');
             Route::post('/{module}/update', [ModuleController::class, 'update'])->name('instructor.courses.modules.update');

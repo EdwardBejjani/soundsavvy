@@ -20,7 +20,6 @@ class ProductSeeder extends Seeder
             'description' => 'A beautiful piano',
             'price' => 1000,
             'SKU' => 'P001',
-            'image' => 'piano.jpg',
             'category_id' => 1,
         ]);
     }

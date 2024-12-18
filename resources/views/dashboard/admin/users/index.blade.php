@@ -35,7 +35,7 @@ Users - Admin Dashboard
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($users as $user)
+                    @forelse ($users as $user)
                     <tr>
                         <td class="bg-dark text-white">{{ $user->id }}</td>
                         <td class="bg-dark text-white">{{ $user->name }}</td>
@@ -44,10 +44,14 @@ Users - Admin Dashboard
                         <td class="bg-dark text-white">
                             <a href="{{route('admin.users.show', $user)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a>
                             <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i> Edit</a>
-                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+                            <a href="{{route('admin.users.destroy', $user)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td class="bg-dark text-white" colspan="5">No Users Found</td>
+                    </tr>
+                    @endforelse
                 </tbody>
                 <tfoot>
                     <tr>

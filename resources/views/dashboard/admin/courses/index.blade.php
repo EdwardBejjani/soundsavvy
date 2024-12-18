@@ -29,7 +29,7 @@ Orders - Admin Dashboard
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $item)
+                    @forelse ($items as $item)
                     <tr>
                         <td class="bg-dark text-white">{{ $item->id }}</td>
                         <td class="bg-dark text-white">{{ $item->user_id }}</td>
@@ -38,11 +38,13 @@ Orders - Admin Dashboard
                         <td class="bg-dark text-white">
                             <!-- <a href="#" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a> -->
                             <a href="{{route('admin.courses.show', $item)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a>
-                            <a href="{{route('admin.courses.edit', $item)}}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i> Edit</a>
-                            <a href="#" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td class="bg-dark text-white" colspan="5">No Courses Found</td>
+                    </tr>
+                    @endforelse
                 </tbody>
                 <tfoot>
                     <tr>

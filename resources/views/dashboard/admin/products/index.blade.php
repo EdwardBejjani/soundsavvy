@@ -28,7 +28,7 @@ Products - Admin Dashboard
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $item)
+                    @forelse ($items as $item)
                     <tr>
                         <td class="bg-dark text-white">{{ $item->id }}</td>
                         <td class="bg-dark text-white">{{ $item->user_id }}</td>
@@ -39,7 +39,11 @@ Products - Admin Dashboard
                             <a href="{{route('admin.products.show', $item)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td class="bg-dark text-white" colspan="5">No Products Found</td>
+                    </tr>
+                    @endforelse
                 </tbody>
                 <tfoot>
                     <tr>

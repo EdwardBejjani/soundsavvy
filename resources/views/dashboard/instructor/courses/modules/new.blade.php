@@ -11,6 +11,7 @@ New Module - Instructor Dashboard
             <h1 class="text-center text-shadow mb-4 text-color-primary">New Module</h1>
             <form method="POST" action="{{route('instructor.courses.modules.create', $item)}}">
                 @csrf
+                <input type="hidden" name="item_id" value="{{$item->id}}">
                 <div class="row">
                     <div class="col">
                         <div class="form-group mb-3">

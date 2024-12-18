@@ -19,7 +19,7 @@ Orders - Admin Dashboard
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($orders as $order)
+                    @forelse ($orders as $order)
                     <tr>
                         <td class=" bg-dark text-white">{{ $order->id }}</td>
                         <td class=" bg-dark text-white">{{ $order->user_id }}</td>
@@ -31,7 +31,11 @@ Orders - Admin Dashboard
                             <a href="{{route('admin.orders.refund', $order)}}" class="btn btn-danger me-2" onclick="return confirm('Are you sure you want to refund this order?')"><i class="fa-solid fa-arrow-rotate-left"></i> Refund</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td class="bg-dark text-white" colspan="5">No Orders Found</td>
+                    </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>

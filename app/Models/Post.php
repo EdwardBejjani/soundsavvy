@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'user_id',
-        'content'
-    ];
+    protected $guarded = [];
     /* fillable bypass: protected $guarded = []; */
     public function user()
     {
