@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.app')
 @section('title')
-Product #: {{$item->id}} - Vendor Dashboard
+Product #: {{$item->id}} - Admin Dashboard
 @endsection
 
 @section('content')

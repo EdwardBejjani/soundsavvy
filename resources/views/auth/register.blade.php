@@ -6,7 +6,7 @@ Register
 <!-- Register Section -->
 <section class="login-section">
     <div class="container">
-        <div class="login-card mb-5">
+        <div class="login-card mb-5 animate-on-scroll slide-up">
             <h2 class="text-center mb-4">Create Your Account</h2>
             <form action="{{route('register')}}" method="POST">
                 @csrf

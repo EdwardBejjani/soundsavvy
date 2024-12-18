@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\CourseController;
+use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\VendorController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
@@ -37,8 +38,6 @@ Route::get('/cart', [DashboardController::class, 'cart'])->name('cart');
 
 Route::get('/checkout', [DashboardController::class, 'checkout'])->name('checkout');
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
     Route::prefix('users')->group(function () {
@@ -47,6 +46,10 @@ Route::prefix('admin')->group(function () {
         Route::get('/{user}/edit', [UserController::class, 'edit'])->name('admin.users.edit');
         Route::post('/{user}/update', [UserController::class, 'update'])->name('admin.users.update');
         Route::get('/{user}/delete', [UserController::class, 'destroy'])->name('admin.users.destroy');
+    });
+    Route::prefix('products')->group(function () {
+        Route::get('/', [ProductController::class, 'index'])->name('admin.products.index');
+        Route::get('/{item}/show', [ProductController::class, 'show'])->name('admin.products.show');
     });
     Route::prefix('courses')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('admin.courses.index');
@@ -68,10 +71,18 @@ Route::prefix('instructor')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('instructor.courses.index');
         Route::get('/new', [CourseController::class, 'new'])->name('instructor.courses.new');
         Route::post('/create', [CourseController::class, 'create'])->name('instructor.courses.create');
-        Route::get('/{item}/show', [CourseController::class, 'show'])->name('instructor.courses.show');
         Route::get('/{item}/edit', [CourseController::class, 'edit'])->name('instructor.courses.edit');
         Route::post('/{item}/update', [CourseController::class, 'update'])->name('instructor.courses.update');
         Route::get('/{item}/delete', [CourseController::class, 'destroy'])->name('instructor.courses.destroy');
+        Route::prefix('/{item}')->group(function () {
+            Route::get('/show', [CourseController::class, 'show'])->name('instructor.courses.show');
+            Route::get('/module/new', [ModuleController::class, 'new'])->name('instructor.courses.modules.new');
+            Route::post('/module/create', [ModuleController::class, 'create'])->name('instructor.courses.modules.create');
+            Route::get('/{module}', [ModuleController::class, 'show'])->name('instructor.courses.modules.show');
+            Route::get('/{module}/edit', [ModuleController::class, 'edit'])->name('instructor.courses.modules.edit');
+            Route::post('/{module}/update', [ModuleController::class, 'update'])->name('instructor.courses.modules.update');
+            Route::get('/{module}/delete', [ModuleController::class, 'destroy'])->name('instructor.courses.modules.destroy');
+        });
     });
     Route::get('/orders', [InstructorController::class, 'index'])->name('instructor.orders');
 });

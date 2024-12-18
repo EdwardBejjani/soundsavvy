@@ -7,10 +7,10 @@ About Us
 <section class="hero about-bg">
     <div class="feature-overlay">
         <div class="container-fluid hero-container text-center">
-            <a href="{{Route('about')}}">
+            <a href="{{Route('about')}}" class="animate-on-scroll slide-up">
                 <img src="about-page/about-us.png" alt="About Us" />
             </a>
-            <p class="lead mb-4">Empowering musicians worldwide since 2024</p>
+            <p class="lead mb-4 animate-on-scroll slide-up delay-200">Empowering musicians worldwide since 2024</p>
         </div>
     </div>
 </section>
@@ -19,8 +19,8 @@ About Us
 <section class="mission">
     <div class="cta-overlay py-5">
         <div class="container text-center py-5">
-            <h1 class="mb-4 mt-5">OUR MISSION</h1>
-            <p>
+            <h1 class="mb-4 mt-5 animate-on-scroll slide-up">OUR MISSION</h1>
+            <p class="lead animate-on-scroll slide-up delay-200">
                 At SoundSavvy, we're dedicated to making music education accessible,
                 engaging, and enjoyable for everyone. We believe that music has the
                 power to transform lives and bring people together.
@@ -34,10 +34,10 @@ About Us
 <section class="values">
     <div class="cta-overlay">
         <div class="container">
-            <h2 class="text-center py-5">Our Values</h2>
+            <h2 class="text-center py-5 animate-on-scroll slide-up">Our Values</h2>
             <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="text-center">
+                    <div class="text-center animate-on-scroll slide-left delay-200">
                         <h3>Excellence</h3>
                         <p class="px-3">
                             We strive for excellence in everything we do, from product
@@ -46,7 +46,7 @@ About Us
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="text-center">
+                    <div class="text-center animate-on-scroll slide-up delay-200">
                         <h3>Innovation</h3>
                         <p class="px-3">
                             We constantly innovate to provide the best learning experience
@@ -55,7 +55,7 @@ About Us
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="text-center">
+                    <div class="text-center animate-on-scroll slide-right delay-200">
                         <h3>Community</h3>
                         <p class="px-3">
                             We foster a supportive community where musicians can learn and

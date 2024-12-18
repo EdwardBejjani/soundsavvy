@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Module;
 use App\Models\Item;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -19,7 +20,7 @@ class CourseController extends Controller
             $items = Item::where('type', '=', 'course')->filter()->paginate(10);
             return view('dashboard.admin.courses.index', compact('items'));
         } elseif (Auth::user()->role == 'instructor') {
-            $items = Item::where('user_id', Auth::id())->get();
+            $items = Item::where('user_id', Auth::id())->paginate(10);
             return view('dashboard.instructor.courses.index', compact('items'));
         } else {
             $items = Item::where('user_id', Auth::id())->get();
@@ -27,12 +28,13 @@ class CourseController extends Controller
         }
     }
 
-    public function show(Item $item)
+    public function show(Item $item, Module $modules)
     {
         if (Auth::user()->role == 'admin') {
-            return view('dashboard.admin.courses.show', compact('item'));
+            return view('dashboard.admin.courses.show', compact('item', 'modules'));
         } elseif (Auth::user()->role == 'instructor') {
-            return view('dashboard.instructor.courses.show', compact('item'));
+            $modules = Module::where('item_id', $item->id)->get();
+            return view('dashboard.instructor.courses.show', compact('item', 'modules'));
         } else {
             return view('courses.show', compact('item'));
         }

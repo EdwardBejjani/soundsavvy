@@ -249,6 +249,7 @@ body {
     border: var(--primary-purple) solid 2px !important;
     box-shadow: 0px 5px 15px rgba(138, 43, 226, 0.7) !important;
     color: var(--light-text);
+    transition: all 0.3s ease-in-out;
 }
 
 .input:hover {
@@ -277,19 +278,23 @@ body {
     padding: 6rem 0 2rem 0;
 }
 
-.card-custom {
-    border-radius: 22px !important;
-    border: 0px !important;
+.profile-card {
+    background-color: var(--dark-bg);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(138, 43, 226, 0.7);
+    min-width: auto;
+    margin: 0 auto;
+    border: var(--primary-purple) solid 2px;
 }
+
 .profile-header {
-    background: var(--darker-purple);
     color: white;
-    padding: 2rem;
-    border-radius: 20px 20px 0 0;
+    padding-top: 2rem;
+    border-radius: 10px 10px 0 0;
+    box-shadow: inset 0px 5px 15px rgba(138, 43, 226, 0.7);
 }
 
 .dark-tabs {
-    background-color: var(--darker-purple);
     color: var(--light-text);
     border-bottom: 0px !important;
 }
@@ -299,28 +304,38 @@ body {
 }
 
 .nav-item-custom {
-    margin-left: 5px !important;
+    margin-left: 10px !important;
 }
 .nav-link-custom {
-    border: 1px solid var(--light-text) !important;
+    border: 2px solid var(--primary-purple) !important;
     color: var(--light-text) !important;
     background-color: var(--darker-purple) !important;
+    border-bottom: 0px !important;
+    box-shadow: 0px 5px 15px rgba(138, 43, 226, 0.7) !important;
+    transition: all 0.3s ease-in-out;
+    z-index: 1000 !important;
 }
 
 .nav-link-custom:hover {
-    background-color: var(--dark-purple) !important;
-    color: var(--light-text) !important;
-    border-bottom: 0px !important;
+    border-color: var(--dark-purple) !important;
+    box-shadow: 0px 10px 25px rgba(138, 43, 226, 0.7) !important;
+    background-color: var(--darker-bg) !important;
+    color: var(--primary-purple) !important;
+    transition: all 0.3s ease-in-out;
 }
 
 .nav-link-custom.active {
-    background-color: var(--dark-purple) !important;
-    border-bottom: 0px !important;
+    background-color: var(--darker-bg) !important;
+    border-color: var(--light-text) !important;
+    color: var(--primary-purple) !important;
 }
 
 .tab-content {
-    background-color: var(--dark-purple) !important;
-    border-radius: 0 0 20px 20px !important;
+    background-color: var(--darker-bg) !important;
+    border-radius: 0 0 13px 13px !important;
+    z-index: 0 !important;
+    border-top: var(--primary-purple) solid 2px !important;
+    box-shadow: inset 0px 5px 15px rgba(138, 43, 226, 0.7) !important;
 }
 
 .dark-border {
@@ -401,6 +416,73 @@ footer a:hover {
     background-color: var(--dark-bg);
     border: var(--dark-purple) solid 2px;
     cursor: not-allowed;
+}
+
+.mbi-0 {
+    margin-bottom: 0 !important;
+}
+
+.pyi-3 {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+/* -----------------transitions---------------- */
+
+.animate-on-scroll {
+    opacity: 0;
+    transition: all 0.5s ease-out;
+}
+
+/* Different animation classes */
+.fade-in {
+    opacity: 0;
+}
+
+.slide-up {
+    opacity: 0;
+    transform: translateY(50px);
+}
+
+.slide-left {
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.slide-right {
+    opacity: 0;
+    transform: translateX(50px);
+}
+
+/* Active states when element is visible */
+.fade-in.shown {
+    opacity: 1;
+}
+
+.slide-up.shown {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.slide-left.shown {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.slide-right.shown {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Optional animation delay classes */
+.delay-200 {
+    transition-delay: 200ms;
+}
+.delay-400 {
+    transition-delay: 400ms;
+}
+.delay-600 {
+    transition-delay: 600ms;
 }
 
 /* ----------Media Queries---------- */

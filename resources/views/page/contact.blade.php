@@ -6,8 +6,8 @@ Contact Us
 <!-- Hero Section -->
 <section class="hero contact-bg">
     <div class="container hero-container text-center">
-        <a href="index.hmtl"><img src="contact-page/contact-us.png" alt="Contact Us" /></a>
-        <p class="lead">We're here to help with any questions you may have</p>
+        <a href="index.hmtl" class="animate-on-scroll slide-up"><img src="contact-page/contact-us.png" alt="Contact Us" /></a>
+        <p class="lead animate-on-scroll slide-up delay-200">We're here to help with any questions you may have</p>
     </div>
 </section>
 
@@ -17,20 +17,20 @@ Contact Us
         <div class="row g-4">
             <div class="col-md-6">
                 <div class="contact-info-card">
-                    <h2 class="mb-4">Contact Information</h2>
-                    <div class="mb-4">
+                    <h2 class="mb-4 animate-on-scroll slide-left">Contact Information</h2>
+                    <div class="mb-4 animate-on-scroll slide-left">
                         <h5>Address</h5>
                         <p>123 Music Street<br />Harmony City, HC 12345</p>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-4 animate-on-scroll slide-left">
                         <h5>Phone</h5>
                         <p>(555) 123-4567</p>
                     </div>
-                    <div class="mb-4">
+                    <div class="mb-4 animate-on-scroll slide-left">
                         <h5>Email</h5>
                         <p>support@soundsavvy.com</p>
                     </div>
-                    <div>
+                    <div class="mb-4 animate-on-scroll slide-left">
                         <h5>Business Hours</h5>
                         <p>
                             Monday - Friday: 9:00 AM - 6:00 PM<br />
@@ -42,13 +42,13 @@ Contact Us
             </div>
             <div class="col-md-6">
                 <div class="contact-info-card">
-                    <h2 class="mb-4">Send us a Message</h2>
+                    <h2 class="mb-4 animate-on-scroll slide-right">Send us a Message</h2>
                     <form>
-                        <div class="mb-3">
+                        <div class="mb-3 animate-on-scroll slide-right">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" required />
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 animate-on-scroll slide-right">
                             <label for="email" class="form-label">Email</label>
                             <input
                                 type="email"
@@ -56,7 +56,7 @@ Contact Us
                                 id="email"
                                 required />
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 animate-on-scroll slide-right">
                             <label for="subject" class="form-label">Subject</label>
                             <input
                                 type="text"
@@ -64,7 +64,7 @@ Contact Us
                                 id="subject"
                                 required />
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 animate-on-scroll slide-up">
                             <label for="message" class="form-label">Message</label>
                             <textarea
                                 class="form-control"
@@ -72,7 +72,7 @@ Contact Us
                                 rows="5"
                                 required></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-primary animate-on-scroll slide-up">
                             Send Message
                         </button>
                     </form>

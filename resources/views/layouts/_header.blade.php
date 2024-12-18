@@ -38,21 +38,21 @@
                 </li>
                 @if (Auth::user()->role == 'admin')
                 <li class="nav-item">
-                    <a href="{{route('admin.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
+                    <a href="{{route('admin.dashboard')}}" class="btn btn-primary nav-link ms-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
                 </li>
                 @elseif (Auth::user()->role == 'vendor')
                 <li class="nav-item">
-                    <a href="{{route('vendor.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
+                    <a href="{{route('vendor.dashboard')}}" class="btn btn-primary nav-link ms-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
                 </li>
                 @elseif (Auth::user()->role == 'instructor')
                 <li class="nav-item">
-                    <a href="{{route('instructor.dashboard')}}" class="btn btn-primary nav-link mx-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
+                    <a href="{{route('instructor.dashboard')}}" class="btn btn-primary nav-link ms-3 px-3 py-3" title="Dashboard"><i class="fa-solid fa-gear"></i></a>
                 </li>
                 @endif
                 <li>
                     <form action="{{Route('logout')}}" method="POST">
                         @csrf
-                        <button class="btn btn-primary nav-link px-3 py-3" title="Logout" type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
+                        <button class="btn btn-primary nav-link ms-3 px-3 py-3" title="Logout" type="submit"><i class="fa-solid fa-right-from-bracket"></i></button>
                     </form>
                 </li>
             </ul>

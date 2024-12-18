@@ -6,8 +6,8 @@ Learn
 <section class="hero learn-hero">
     <div class="feature-overlay">
         <div class="container hero-container text-center">
-            <img src="learn-page/learn.png" alt="Contact Us" />
-            <p class="lead">Become the master of your craft!</p>
+            <img class="animate-on-scroll slide-up" src="learn-page/learn.png" alt="Contact Us" />
+            <p class="lead animate-on-scroll slide-up delay-200">Become the master of your craft!</p>
         </div>
     </div>
 </section>

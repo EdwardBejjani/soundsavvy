@@ -6,18 +6,18 @@ Home
 <!-- Hero Section -->
 <section class="hero home-bg">
     <div class="container hero-container text-center">
-        <a href="{{Route('home')}}"><img src="{{asset('homepage-images/soundsavvy.png')}}" alt="SOUNDSAVVY" /></a>
-        <p class="lead">Become the master of your craft!</p>
-        <a href="{{Route('learn')}}" class="btn btn-primary btn-lg">GET STARTED</a>
+        <a href="{{Route('home')}}" class="animate-on-scroll slide-up"><img src="{{asset('homepage-images/soundsavvy.png')}}" alt="SOUNDSAVVY" /></a>
+        <p class="lead animate-on-scroll slide-up">Become the master of your craft!</p>
+        <a href="{{Route('learn')}}" class="btn btn-primary btn-lg animate-on-scroll slide-up delay-200">GET STARTED</a>
     </div>
 </section>
 
 <!-- Features Section -->
 <section class="feature-bg">
     <div class="py-5 container-fluid feature-overlay">
-        <h2 class="text-center mb-5 feature-heading">All-In-One</h2>
+        <h2 class="text-center mb-5 feature-heading animate-on-scroll slide-up">All-In-One</h2>
         <div class="row g-4">
-            <div class="col-md-4">
+            <div class="col-md-4 animate-on-scroll slide-left delay-200">
                 <div class="text-center">
                     <div class="feature-icon"><i class="fa-solid fa-music"></i></div>
                     <h3>Shop</h3>
@@ -28,7 +28,7 @@ Home
                     </p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 animate-on-scroll slide-up delay-200">
                 <div class="text-center">
                     <div class="feature-icon"><i class="fa-solid fa-book"></i></div>
                     <h3>Learn</h3>
@@ -39,7 +39,7 @@ Home
                     </p>
                 </div>
             </div>
-            <div class="col-md-4">
+            <div class="col-md-4 animate-on-scroll slide-right delay-200">
                 <div class="text-center">
                     <div class="feature-icon">
                         <i class="fa-solid fa-comments"></i>
@@ -62,9 +62,9 @@ Home
 <!-- CTA Section -->
 <section class="bg-primary text-white cta-section">
     <div class="container-fluid text-center py-5 cta-overlay">
-        <h2 class="mb-4 pt-5">Ready to get started?</h2>
-        <p class="lead mb-4">Join thousands of motivated musicians today.</p>
-        <button class="btn btn-primary btn-lg">SIGN UP NOW</button>
+        <h2 class="mb-4 pt-5 animate-on-scroll slide-up">Ready to get started?</h2>
+        <p class="lead mb-4 animate-on-scroll slide-up delay-200">Join thousands of motivated musicians today.</p>
+        <button class="btn btn-primary btn-lg animate-on-scroll slide-up delay-400">SIGN UP NOW</button>
     </div>
 </section>
 @endguest

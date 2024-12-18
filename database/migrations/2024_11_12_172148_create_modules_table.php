@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('item_id');
             $table->string('title');
             $table->longText('description');
+            $table->string('link');
             $table->integer('order');
             $table->timestamps();
         });
