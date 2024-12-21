@@ -1,7 +1,9 @@
 @extends('layouts.app')
+
 @section('title')
 Shop
 @endsection
+
 @section('content')
 <!-- Shop Section -->
 <section class="shop-section">
@@ -10,16 +12,7 @@ Shop
             <div class="col-12">
                 <h1 class="my-5">Shop Instruments</h1>
                 <div class="d-flex justify-content-between align-items-center">
-                    <p class="mb-0">Showing 24 of 100 products</p>
                     <div class="d-flex align-items-center">
-                        <label class="me-2">Sort by:</label>
-                        <select class="form-select sort-select">
-                            <option>Featured</option>
-                            <option>Price: Low to High</option>
-                            <option>Price: High to Low</option>
-                            <option>Newest</option>
-                            <option>Best Selling</option>
-                        </select>
                     </div>
                 </div>
             </div>
@@ -32,17 +25,19 @@ Shop
                     <!-- Product Card -->
                     @forelse ( $items as $item)
                     <div class="col-md-3">
-                        <div class="product-card">
-                            <img src="{{asset($item->image ?? 'no-image.png')}}" alt="{{$item->name}}" class="product-image">
-                            <div class="product-details">
-                                <h5>{{ucwords($item->name)}}</h5>
-                                <p class="text-muted mb-2">{{$item->description}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <span class="price">${{number_format($item->price,2)}}</span>
-                                    <button class="btn btn-outline-primary">Add to Cart</button>
+                        <a href="{{route('product', $item)}}" class="text-decoration-none">
+                            <div class="product-card">
+                                <img src="{{asset('storage/' . $item->image)}}" alt="{{$item->name}}" class="product-image">
+                                <div class="product-details">
+                                    <h5 class="text-white">{{ucwords($item->name)}}</h5>
+                                    <p class="text-muted mb-2">{{$item->description}}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="price">${{number_format($item->price,2)}}</span>
+                                        <button class="btn btn-outline-primary">View Details</button>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     @empty
                     <div>

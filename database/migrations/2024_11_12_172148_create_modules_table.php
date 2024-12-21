@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->longText('description');
             $table->string('link');
+            $table->string('status')->default('incomplete');
             $table->timestamps();
         });
     }

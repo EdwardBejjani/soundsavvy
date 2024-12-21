@@ -36,9 +36,10 @@
 <body>
     <!-- Navigation -->
     @include('dashboard.layouts._header')
-
-    @include('layouts._notification')
     <!-- Content -->
+    <div class="notification">
+        @include('layouts._notification')
+    </div>
     @yield('content')
 
     <!-- Footer -->

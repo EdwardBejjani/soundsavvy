@@ -28,9 +28,10 @@ class CourseController extends Controller
         }
     }
 
-    public function show(Item $item, Module $modules)
+    public function show(Item $item)
     {
         if (Auth::user()->role == 'admin') {
+            $modules = Module::where('item_id', $item->id)->get();
             return view('dashboard.admin.courses.show', compact('item', 'modules'));
         } elseif (Auth::user()->role == 'instructor') {
             $modules = Module::where('item_id', $item->id)->get();

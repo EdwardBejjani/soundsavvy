@@ -50,6 +50,8 @@ class User extends Authenticatable
     const ROLE_INSTRUCTOR = 'instructor';
     const ROLE_ADMIN = 'admin';
     const ROLE_VENDOR = 'vendor';
+
+    const ROLE_CUSTOMER = 'user';
     // public function ideas()
     // {
     //     return $this->hasMany(Post::class)->latest();
@@ -89,13 +91,15 @@ class User extends Authenticatable
         return $this->role === self::ROLE_INSTRUCTOR;
     }
 
-    public function getFullNameAttribute()
+    public function isCustomer()
     {
-        return $this->name;
+        return $this->role === self::ROLE_CUSTOMER;
     }
 
-
-
+    public function items()
+    {
+        return $this->hasMany(Item::class);
+    }
     public function scopeFilter($query)
     {
         if (request('name')) {

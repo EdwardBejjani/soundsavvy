@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
+            $table->string('payment_method');
             $table->string('status');
-            $table->integer('total_price');
+            $table->double('sub_total')->unsigned()->default(0);
+            $table->integer('total_price')->unsigned()->default(0);
             $table->timestamps();
         });
     }

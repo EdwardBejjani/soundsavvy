@@ -15,20 +15,9 @@ class Item extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-    public function scopeActive($query)
+    public function user()
     {
-        return $query->where('is_active', true);
-    }
-
-    public function isInStock()
-    {
-        return $this->stock > 0;
-    }
-
-    public function reduceStock($quantity)
-    {
-        $this->decrement('stock', $quantity);
+        return $this->belongsTo(User::class);
     }
     public function scopeFilter($query)
     {

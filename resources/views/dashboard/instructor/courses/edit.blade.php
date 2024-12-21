@@ -8,7 +8,7 @@ Edit Course - Instructor Dashboard
     <div class="container py-5">
         <div class="login-card mt-5 text-center">
             <h1 class="text-center text-shadow">Edit Course</h1>
-            <form action="{{route('admin.courses.update', $item->id)}}" method="POST">
+            <form action="{{route('instructor.courses.update', $item->id)}}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Course Name</label>

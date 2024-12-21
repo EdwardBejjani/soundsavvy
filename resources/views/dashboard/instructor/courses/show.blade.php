@@ -28,16 +28,18 @@ Course #: {{$item->id}} - Instructor Dashboard
                 <div class="text-end">
                     <a href="{{route('instructor.courses.modules.new', $item)}}" class="btn btn-primary"><i class="fa-solid fa-plus"></i> New Module</a>
                 </div>
-                <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="row mt-2">
                     @foreach ($modules as $module)
-                    <div class="col">
-                        <div class="card h-100">
-                            <div class="card-body">
-                                <h5 class="card-title">{{$module->title}}</h5>
-                                <p class="card-text">{{$module->description}}</p>
+                    <a href="{{route('instructor.courses.modules.show', ['item'=>$item, 'module'=>$module])}}">
+                        <div class="col-12">
+                            <div class="card h-100 db-btn">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{$module->title}}</h5>
+                                    <p class="card-text">{{$module->description}}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                     @endforeach
                 </div>
             </div>

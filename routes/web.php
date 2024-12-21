@@ -29,7 +29,7 @@ Route::get('/learn', [HomeController::class, 'learn'])->name('learn');
 
 Route::get('profile', [ProfileController::class, 'show'])->middleware('auth')->name('profile');
 
-Route::get('/products/{item}', [HomeController::class, 'product'])->name('item');
+Route::get('/products/{item}', [HomeController::class, 'product'])->name('product');
 
 Route::get('/courses/{item}', [HomeController::class, 'course'])->name('course');
 

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Item;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,7 +20,8 @@ class ProductController extends Controller
     {
         if (Auth::user()->role == 'admin') {
             $items = Item::where('type', '=', 'product')->filter()->paginate(10);
-            return view('dashboard.admin.products.index', compact('items'));
+            $users = User::select('id', 'name')->where('role', 'vendor')->get();
+            return view('dashboard.admin.products.index', compact('items', 'users'));
         } elseif (Auth::user()->role == 'vendor') {
             $items = Item::where('user_id', Auth::id())->filter()->paginate(10);
             return view('dashboard.vendor.products.index', compact('items'));
@@ -60,6 +62,7 @@ class ProductController extends Controller
             $path = $request->file('image')->store('images', 'public');
         }
         $data = $request->all();
+        $data['image'] = $path;
         Item::create($data);
         return redirect()->back()->with('success', 'Product Created Successfully')->with('image_path', $path);
     }

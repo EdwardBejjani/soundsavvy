@@ -13,11 +13,11 @@ New Product - Vendor Dashboard
                 @csrf
                 <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Product Name">
+                    <input type="text" class="form-control input" id="name" name="name" placeholder="Product Name">
                     <label for="name">Product Name</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="sku" name="sku" placeholder="Product SKU">
+                    <input type="text" class="form-control input" id="sku" name="sku" placeholder="Product SKU">
                     <label for="sku">Product SKU</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -30,15 +30,15 @@ New Product - Vendor Dashboard
                     <label for="price">Product Category</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="price" name="price" placeholder="Product Price">
+                    <input type="number" class="form-control input" id="price" name="price" placeholder="Product Price">
                     <label for="price">Product Price</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="file" class="form-control" id="image" name="image" placeholder="Product Image">
+                    <input type="file" class="form-control input" id="image" name="image" placeholder="Product Image">
                     <label for="image">Product Image</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <textarea class="form-control" id="description" name="description" placeholder="Product Description" style="height: 100px"></textarea>
+                    <textarea class="form-control input" id="description" name="description" placeholder="Product Description" style="height: 100px"></textarea>
                     <label for="description">Product Description</label>
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

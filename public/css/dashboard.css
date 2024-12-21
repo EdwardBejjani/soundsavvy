@@ -79,3 +79,11 @@ table {
     padding: 25px;
     border-radius: 20px;
 }
+
+.notification {
+    position: fixed;
+    z-index: 100;
+    top: 10%;
+    right: auto;
+    max-width: 200px;
+}

@@ -18,9 +18,8 @@ class ModuleController extends Controller
     {
         return view('dashboard.instructor.courses.modules.new', compact('item'));
     }
-    public function create(Request $request)
+    public function create(Item $item, Request $request)
     {
-        $item = Item::find($request->item_id);
         $request->validate([
             'title' => 'required | min:3 | max:50',
             'description' => 'required | min:10 | max:300',
@@ -31,17 +30,17 @@ class ModuleController extends Controller
         return redirect()->route('instructor.courses.index');
     }
 
-    public function show(Module $module)
+    public function show(Item $item, Module $module)
     {
-        return view('instructor.courses.modules.show', compact('module'));
+        return view('instructor.courses.modules.show', compact('item', 'module'));
     }
 
-    public function edit(Module $module)
+    public function edit(Item $item, Module $module)
     {
         return view('instructor.courses.modules.edit', compact('module'));
     }
 
-    public function update(Request $request, Module $module)
+    public function update(Request $request, Item $item, Module $module)
     {
         $request->validate([
             'title' => 'required | min:3 | max:50',
@@ -53,7 +52,7 @@ class ModuleController extends Controller
         return redirect()->route('instructor.courses.index');
     }
 
-    public function destroy(Module $module)
+    public function destroy(Item $item, Module $module)
     {
         $module->delete();
         return redirect()->route('instructor.courses.index');
