@@ -56,9 +56,13 @@ class CourseController extends Controller
             'category_id' => 'required | exists:categories,id',
             'SKU' => 'required',
         ]);
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('images', 'public');
+        }
         $data = $request->all();
+        $data['image'] = $path;
         Item::create($data);
-        return redirect()->route('instructor.courses.index');
+        return redirect()->back()->with('success', 'Course Created Successfully')->with('image_path', $path);
     }
 
     public function edit(Item $item)
@@ -71,11 +75,14 @@ class CourseController extends Controller
         $request->validate([
             'title' => 'required | min:3 | max:50',
             'description' => 'required | min:10 | max:300',
-            'image' => 'required',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',,
             'price' => 'required | min:1',
             'category_id' => 'required | exists:categories,id',
-            'SKU' => 'required',
+            'sku' => 'required',
         ]);
+        if ($request->file('image')) {
+            $path = $request->file('image')->store('images', 'public');
+        }
         $data = $request->all();
         $item->update($data);
         return redirect()->route('instructor.courses.index');

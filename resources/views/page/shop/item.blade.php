@@ -19,9 +19,11 @@
                 <p class="text-muted">{{$item->SKU}}</p>
                 <p class="text-muted">{{$item->description}}</p>
                 <p class="text-white fs-4 fw-bold">$ {{number_format($item->price,2)}}</p>
-                <input type="number" class="form-control mb-3" id="quantity" value="1" min="1">
-                <button class="btn btn-primary shake" id="addToCart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                <button class="btn btn-primary shake" id="buyNow">Buy Now</button>
+                <input type="number" class="form-control mb-3 input" id="quantity" value="1" min="1">
+                <div class="d-flex flex-column gap-3">
+                    <button class="btn btn-primary shake" id="addToCart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                    <button class="btn btn-primary shake" id="buyNow"><i class="fa-solid fa-money-bill"></i> Buy Now</button>
+                </div>
             </div>
         </div>
     </div>

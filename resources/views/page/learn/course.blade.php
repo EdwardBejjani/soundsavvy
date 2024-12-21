@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-12 mt-3">
                 <h1 class="text-color-primary">{{$item->name}}</h1>
-                <p class="text-muted">{{$item->user_id}}</p>
+                <p class="text-muted">{{$item->user->name}}</p>
             </div>
         </div>
         <div class="row">
@@ -17,9 +17,8 @@
         </div>
         <div class="row mb-5">
             <div class="col-md-12">
-                <form action="">
-                    <button class="btn btn-primary">Enroll Now</button>
-                </form>
+                <button class="btn btn-primary shake me-3" id="addToCart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button class="btn btn-primary shake" id="buyNow"><i class="fa-solid fa-money-bill"></i> Enroll Now</button>
             </div>
         </div>
         <div class="row">

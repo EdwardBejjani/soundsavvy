@@ -1,54 +1,56 @@
 @extends('layouts.app')
 
-@section('title', __('landing.checkout'))
+@section('title')
+Checkout
+@endsection
 
 @section('content')
 @include('layouts._notification')
-<section class="pb-5">
-    <div class="container">
+<section class="py-5">
+    <div class="container mt-5">
         <div class="checkout-container">
             <form class="form" action="{{ route('order') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <!-- Left Column -->
                     <div class="col-md-7">
-                        <div class="card p-4">
-                            <h3 class="text-secondary text-center mb-4">{{ __('landing.checkout') }}</h3>
+                        <div class="card login-card p-4">
+                            <h3 class="text-color-primary text-center mb-4">Checkout</h3>
 
                             <!-- Contact Information -->
                             <div class="mb-4">
-                                <label for="email" class="form-label">{{ __('landing.email') }}</label>
-                                <input type="email" name="email" class="form-control" placeholder="you@example.com"
+                                <label for="email" class="form-label text-white">Email</label>
+                                <input type="email" name="email" class="form-control input" placeholder="you@example.com"
                                     required>
                             </div>
 
                             <!-- Shipping Information -->
                             <div class="mb-4">
-                                <h4 class="text-secondary mb-3">{{ __('landing.shipping_address') }}</h4>
+                                <h4 class="text-color-primary mb-3">Shipping Address</h4>
                                 <div class="mb-3">
-                                    <label for="name" class="form-label">{{ __('landing.name') }}</label>
-                                    <input type="text" id="name" name="name" class="form-control" placeholder="John Doe"
+                                    <label for="name" class="form-label text-white">Name</label>
+                                    <input type="text" id="name" name="name" class="form-control input" placeholder="John Doe"
                                         required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="phone" class="form-label">{{ __('landing.phone') }}</label>
-                                    <input type="tel" id="phone" name="phone" class="form-control"
+                                    <label for="phone" class="form-label text-white">Phone</label>
+                                    <input type="tel" id="phone" name="phone" class="form-control input"
                                         placeholder="+961 70 285 659" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="address" class="form-label">{{ __('landing.address') }}</label>
-                                    <input type="text" id="address" name="address" class="form-control"
+                                    <label for="address" class="form-label text-white">Address</label>
+                                    <input type="text" id="address" name="address" class="form-control input"
                                         placeholder="123 Main St" required>
                                 </div>
                             </div>
 
                             <div class="mb-4">
-                                <h4 class="text-primary mb-3">{{ __('landing.payment_info') }}</h4>
+                                <h4 class="text-color-primary mb-3">Payment Info</h4>
 
                                 <div class="mb-3">
-                                    <label for="method" class="form-label">{{ __('landing.payment_method') }}</label>
-                                    <select id="method" name="payment_method" class="form-select" required>
-                                        <option value="cash on delivery" selected>{{ __('landing.cash_on_delivery') }}
+                                    <label for="method" class="form-label text-white">Payment Method</label>
+                                    <select id="method" name="payment_method" class="form-select input" required>
+                                        <option value="cash on delivery" selected>Cash On Delivery
                                         </option>
                                     </select>
                                 </div>
@@ -58,28 +60,27 @@
 
                     <!-- Right Column -->
                     <div class="col-md-5">
-                        <div class="card p-4 border-primary">
-                            <h4 class="text-secondary text-center mb-4">{{ __('landing.order_summary') }}</h4>
+                        <div class="card login-card p-4">
+                            <h4 class="text-color-primary text-center mb-4">Order Summary</h4>
                             <div class="summary-card" id="cart-items-container">
                                 <!-- Cart Items will be populated here dynamically -->
                             </div>
 
                             <!-- Price Breakdown -->
-                            <div class="summary-item">
-                                <span>{{ __('landing.subtotal') }}</span>
+                            <div class="summary-item text-white">
+                                <span>Subtotal</span>
                                 <span id="subtotal-price">$0.00</span>
                             </div>
-                            <div class="summary-item">
-                                <span>{{ __('landing.shipping') }}</span>
+                            <div class="summary-item text-white">
+                                <span>Shipping</span>
                                 <span id="shipping-price">$10.00</span>
                             </div>
-                            <div class="summary-item total-price">
-                                <span>{{ __('landing.total') }}</span>
+                            <div class="summary-item total-price text-white">
+                                <span>Total</span>
                                 <span id="total-price">$0.00</span>
                             </div>
 
-                            <button type="submit" class="btn btn-cta">{{ __('landing.complete_order')
-                                }}</button>
+                            <button type="submit" class="btn btn-primary mt-3">Complete Order</button>
                         </div>
                     </div>
                 </div>
@@ -112,12 +113,12 @@
             cartItem.classList.add('cart-item', 'd-flex', 'align-items-center', 'mb-3');
 
             cartItem.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" class="me-3" style="width: 60px; height: 60px; object-fit: cover;">
+                <img src="${item.image}" alt="${item.name}" class="me-3 text-white" style="width: 60px; height: 60px; object-fit: cover;">
                 <div>
-                    <p class="mb-0">${item.name}</p>
-                    <small>{{ __('landing.quantity') }}: ${item.quantity}</small>
+                    <p class="mb-0 text-white">${item.name}</p>
+                    <small class="text-white">Quantity: ${item.quantity}</small>
                 </div>
-                <p class="ms-auto">$${(item.price * item.quantity).toFixed(2)}</p>
+                <p class="ms-auto text-white">$${(item.price * item.quantity).toFixed(2)}</p>
                 <input type="hidden" name="cart[${count}][id]" value="${item.id}">
                 <input type="hidden" name="cart[${count}][name]" value="${item.name}">
                 <input type="hidden" name="cart[${count}][image]" value="${item.image}">

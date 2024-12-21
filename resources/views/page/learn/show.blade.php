@@ -18,7 +18,7 @@ Learn
         @forelse ($items as $item)
         <a href="{{route('course', $item)}}" class="text-decoration-none">
             <div class="course-card">
-                <img src="learn-page/piano-basics.png" alt="Piano Basics">
+                <img src="{{asset('storage/' . $item->image)}}" alt="{{$item->name}}">
                 <div class="course-content">
                     <h3 class="text-white">{{$item->name}}</h3>
                     <p>{{$item->description}}</p>

@@ -25,7 +25,7 @@ Shop
                     <!-- Product Card -->
                     @forelse ( $items as $item)
                     <div class="col-md-3">
-                        <a href="{{route('product', $item)}}" class="text-decoration-none">
+                        <a href="{{route('product', $item)}}" class="text-decoration-none text-white">
                             <div class="product-card">
                                 <img src="{{asset('storage/' . $item->image)}}" alt="{{$item->name}}" class="product-image">
                                 <div class="product-details">
@@ -33,7 +33,7 @@ Shop
                                     <p class="text-muted mb-2">{{$item->description}}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <span class="price">${{number_format($item->price,2)}}</span>
-                                        <button class="btn btn-outline-primary">View Details</button>
+                                        <button class="btn btn-primary">View Details</button>
                                     </div>
                                 </div>
                             </div>

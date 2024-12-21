@@ -1,7 +1,7 @@
-<div class="offcanvas offcanvas-end" tabindex="-2" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
+<div class="offcanvas offcanvas-end bg-primary" tabindex="-2" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
     <div class="offcanvas-header">
-        <h5 class="offcanvas-title text-secondary fw-bold" id="offcanvasCartLabel">Your Cart</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        <h5 class="offcanvas-title text-white fw-bold" id="offcanvasCartLabel">Your Cart</h5>
+        <button type="button" class="btn-close text-white" data-bs-dismiss="offcanvas" aria-label="Close"><i class="fa-solid fa-x text-white"></i></button>
     </div>
     <div class="offcanvas-body">
         <div id="cart-items">
@@ -12,11 +12,11 @@
         <div class="cart-summary">
             <div class="d-flex justify-content-between">
                 <span class="text-secondary">Total Items:</span>
-                <span id="cart-total-items">0</span>
+                <span id="cart-total-items" class="fw-bold text-white">0</span>
             </div>
             <div class="d-flex justify-content-between">
                 <span class="text-secondary">Total Price:</span>
-                <span id="cart-total-price">$0.00</span>
+                <span id="cart-total-price" class="fw-bold text-white">$0.00</span>
             </div>
         </div>
 
@@ -51,9 +51,9 @@
             cartItem.classList.add('cart-item', 'd-flex', 'align-items-center', 'mb-3');
 
             cartItem.innerHTML = `
-                <img src="${item.image}" alt="${item.name}" class="img-fluid rounded me-3" style="width: 50px; height: 50px; object-fit: cover;">
+                <img src="${item.image}" alt="${item.name}" class="img-fluid rounded me-3 text-white" style="width: 50px; height: 50px; object-fit: cover;">
                 <div class="flex-grow-1">
-                    <h6 class="mb-0">${item.name}</h6>
+                    <h6 class="mb-0 text-white">${item.name}</h6>
                     <small class="text-muted">price: $${item.price} | quantity: ${item.quantity}</small>
                 </div>
                 <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">remove</button>

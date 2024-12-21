@@ -266,6 +266,10 @@ body {
     box-shadow: 0px 10px 25px rgba(138, 43, 226, 0.7) !important;
     border: var(--light-text) solid 2px !important;
 }
+
+.input::placeholder {
+    color: #999da1;
+}
 /* ------------Register---------- */
 
 .text-color-primary {
