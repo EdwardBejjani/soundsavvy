@@ -27,7 +27,7 @@ class ModuleController extends Controller
         ]);
         $data = $request->all();
         Module::create($data);
-        return redirect()->route('dashboard.instructor.courses.index');
+        return redirect()->back()->with('message', 'Module Created Successfully');
     }
 
     public function show(Item $item, Module $module)

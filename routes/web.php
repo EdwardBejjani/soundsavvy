@@ -33,12 +33,17 @@ Route::get('/products/{item}', [HomeController::class, 'product'])->name('produc
 
 Route::get('/courses/{item}', [HomeController::class, 'course'])->name('course');
 
+Route::get('/courses/{item}/modules', [HomeController::class, 'modules'])->name('modules');
+
+Route::get('/courses/{item}/modules/{module}', [HomeController::class, 'watch'])->name('watch');
+
 Route::get('/checkout', [HomeController::class, 'checkout'])->name('checkout');
 
 Route::post('/order', [HomeController::class, 'order'])->name('order');
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::post('/contact', [AdminController::class, 'contact'])->name('admin.contact');
     Route::prefix('users')->group(function () {
         Route::get('/', [UserController::class, 'index'])->name('admin.users.index');
         Route::get('/{user}/show', [UserController::class, 'show'])->name('admin.users.show');
@@ -63,6 +68,7 @@ Route::prefix('admin')->group(function () {
 
 Route::prefix('instructor')->group(function () {
     Route::get('/dashboard', [InstructorController::class, 'dashboard'])->name('instructor.dashboard');
+    Route::post('/contact', [InstructorController::class, 'contact'])->name('instructor.contact');
     Route::prefix('courses')->group(function () {
         Route::get('/', [CourseController::class, 'index'])->name('instructor.courses.index');
         Route::get('/new', [CourseController::class, 'new'])->name('instructor.courses.new');
@@ -85,6 +91,7 @@ Route::prefix('instructor')->group(function () {
 
 Route::prefix('vendor')->group(function () {
     Route::get('/dashboard', [VendorController::class, 'dashboard'])->name('vendor.dashboard');
+    Route::post('/contact', [VendorController::class, 'contact'])->name('vendor.contact');
     Route::prefix('products')->group(function () {
         Route::get('/', [ProductController::class, 'index'])->name('vendor.products.index');
         Route::get('/new', [ProductController::class, 'new'])->name('vendor.products.new');

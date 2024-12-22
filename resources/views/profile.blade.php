@@ -67,11 +67,29 @@
                     {{-- Enrolled Courses Section --}}
                     <div class="tab-pane fade p-4" id="courses" role="tabpanel">
                         <h2 class="mb-4 text-light animate-on-scroll slide-up">Enrolled Courses</h2>
+                        @foreach ($enrolled_courses as $course)
+                        <div class="card btn-primary mb-3 animate-on-scroll slide-up">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $course->name }}</h5>
+                                <p class="card-text">{{ $course->description }}</p>
+                                <a href="{{ route('course', $course->id) }}" class="btn btn-primary">View More</a>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
 
                     {{-- Purchase History Section --}}
                     <div class="tab-pane fade p-4" id="purchases" role="tabpanel">
                         <h2 class="mb-4 text-light animate-on-scroll slide-up">Purchase History</h2>
+                        @foreach ($purchased_items as $product)
+                        <div class="card btn-primary mb-3 animate-on-scroll slide-up">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ $product->name }}</h5>
+                                <p class="card-text">Price: ${{ $product->price }}</p>
+                                <p class="card-text">Purchased on: {{ $product->created_at->format('d M Y') }}</p>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

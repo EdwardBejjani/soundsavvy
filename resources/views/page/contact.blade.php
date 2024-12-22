@@ -47,7 +47,8 @@ Contact Us
             <div class="col-md-6">
                 <div class="contact-info-card text-center">
                     <h2 class="mb-4 animate-on-scroll slide-right">Send us a Message</h2>
-                    <form>
+                    <form action="{{route('contact.send')}}" class="form" method="POST" enctype="multipart/form-data">
+                        @csrf
                         <div class="mb-3 animate-on-scroll slide-right">
                             <label for="name" class="form-label">Name</label>
                             <input type="text" class="form-control" id="name" required />

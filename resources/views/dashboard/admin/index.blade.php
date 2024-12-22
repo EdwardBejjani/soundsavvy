@@ -56,7 +56,7 @@ Admin Dashboard
             </div>
             <div class="col-md-6  animate-on-scroll slide-right">
                 <h3 class="text-center text-shadow">Compose</h3>
-                <form action="#" method="POST" class="compose-box mt-3">
+                <form action="{{route('admin.contact')}}" method="POST" class="compose-box mt-3" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>

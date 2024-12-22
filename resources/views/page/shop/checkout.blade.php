@@ -21,7 +21,7 @@ Checkout
                             <div class="mb-4">
                                 <label for="email" class="form-label text-white">Email</label>
                                 <input type="email" name="email" class="form-control input" placeholder="you@example.com"
-                                    required>
+                                    value="{{Auth::user()->email ?? ''}}" required>
                             </div>
 
                             <!-- Shipping Information -->
@@ -29,18 +29,18 @@ Checkout
                                 <h4 class="text-color-primary mb-3">Shipping Address</h4>
                                 <div class="mb-3">
                                     <label for="name" class="form-label text-white">Name</label>
-                                    <input type="text" id="name" name="name" class="form-control input" placeholder="John Doe"
+                                    <input type="text" id="name" name="name" class="form-control input" placeholder="John Doe" value="{{Auth::user()->name ?? ''}}"
                                         required>
                                 </div>
-                                <div class="mb-3">
+                                <div class=" mb-3">
                                     <label for="phone" class="form-label text-white">Phone</label>
                                     <input type="tel" id="phone" name="phone" class="form-control input"
-                                        placeholder="+961 70 285 659" required>
+                                        placeholder="+961 70 285 659" value="{{Auth::user()->phone ?? ''}}" required>
                                 </div>
                                 <div class="mb-3">
                                     <label for="address" class="form-label text-white">Address</label>
                                     <input type="text" id="address" name="address" class="form-control input"
-                                        placeholder="123 Main St" required>
+                                        placeholder="123 Main St" value="{{Auth::user()->address ?? ''}}" required>
                                 </div>
                             </div>
 

@@ -9,6 +9,7 @@ use App\Models\Module;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
@@ -24,6 +25,25 @@ class HomeController extends Controller
     public function contact()
     {
         return view('page/contact');
+    }
+
+    public function contact_send(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'subject' => 'required|string|max:255',
+            'message' => 'required|string',
+        ]);
+
+        $data = $request->all();
+
+        Mail::send('emails.contact', ['data' => $data], function ($message) use ($data) {
+            $message->to('edwardbejjani@gmail.com')
+                ->subject('New Contact');
+        });
+
+        return redirect()->back()->with('success', 'Message sent successfully.');
     }
     public function shop()
     {
@@ -43,9 +63,22 @@ class HomeController extends Controller
     public function course(Item $item)
     {
         $modules = Module::where('course_id', $item->id);
-        return view('page/learn/course', compact('item', 'modules'));
+        $userisEnrolled = OrderItem::whereHas('order', function ($query) {
+            $query->where('user_id', Auth::id());
+        })->where('item_id', $item->id)->exists();
+        return view('page/learn/course', compact('item', 'modules', 'userisEnrolled'));
     }
 
+    public function modules(Item $item)
+    {
+        $modules = Module::where('item_id', $item->id)->get();
+        return view('page/learn/modules', compact('item', 'modules'));
+    }
+
+    public function watch(Item $item, Module $module)
+    {
+        return view('page/learn/watch', compact('item', 'module'));
+    }
     public function checkout()
     {
         return view('page/shop/checkout');
