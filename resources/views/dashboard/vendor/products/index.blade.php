@@ -31,7 +31,7 @@ Your Products - Vendor Dashboard
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($items as $item)
+                    @forelse ($items as $item)
                     <tr>
                         <td class="bg-dark text-white">{{ $item->user->name }}</td>
                         <td class="bg-dark text-white">{{ $item->name }}</td>
@@ -40,10 +40,14 @@ Your Products - Vendor Dashboard
                             <!-- <a href="#" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a> -->
                             <a href="{{route('vendor.products.show', $item)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a>
                             <a href="{{route('vendor.products.edit', $item)}}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i> Edit</a>
-                            <a href="{{route('vendor.products.destroy', $item->id)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+                            <a href="{{route('vendor.products.destroy', $item->id)}}" class="btn btn-danger btn-del"><i class="fa-solid fa-trash"></i> Delete</a>
                         </td>
                     </tr>
-                    @endforeach
+                    @empty
+                    <tr>
+                        <td class="bg-dark text-white" colspan="5">No Products Found</td>
+                    </tr>
+                    @endforelse
                 </tbody>
                 <tfoot>
                     <tr>

@@ -44,7 +44,7 @@ Users - Admin Dashboard
                         <td class="bg-dark text-white">
                             <a href="{{route('admin.users.show', $user)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a>
                             <a href="{{route('admin.users.edit', $user)}}" class="btn btn-primary me-2"><i class="fa-solid fa-pen"></i> Edit</a>
-                            <a href="{{route('admin.users.destroy', $user)}}" class="btn btn-danger"><i class="fa-solid fa-trash"></i> Delete</a>
+                            <a href="{{route('admin.users.destroy', $user)}}" class="btn btn-danger btn-del"><i class="fa-solid fa-trash"></i> Delete</a>
                         </td>
                     </tr>
                     @empty

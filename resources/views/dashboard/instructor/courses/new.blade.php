@@ -9,11 +9,21 @@ New Course - Instructor Dashboard
     <div class="container py-5">
         <div class="login-card mt-5 text-center">
             <h1 class="text-center text-shadow mb-4 text-color-primary">New Course</h1>
-            <form action="/instructor/courses" method="POST" enctype="multipart/form-data">
+            <form action="{{route('instructor.courses.create')}}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="user_id" value="{{auth()->user()->id}}">
+                <input type="hidden" name="type" value="course">
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control input" id="name" name="name" placeholder="Course Name">
                     <label for="name">Course Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <select class="form-select input" id="category_id" name="category_id">
+                        <option selected disabled>Select Category</option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control input" id="sku" name="sku" placeholder="Course SKU">

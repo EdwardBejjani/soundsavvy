@@ -27,17 +27,17 @@ class ModuleController extends Controller
         ]);
         $data = $request->all();
         Module::create($data);
-        return redirect()->route('instructor.courses.index');
+        return redirect()->route('dashboard.instructor.courses.index');
     }
 
     public function show(Item $item, Module $module)
     {
-        return view('instructor.courses.modules.show', compact('item', 'module'));
+        return view('dashboard.instructor.courses.modules.show', compact('item', 'module'));
     }
 
     public function edit(Item $item, Module $module)
     {
-        return view('instructor.courses.modules.edit', compact('module'));
+        return view('dashboard.instructor.courses.modules.edit', compact('module', 'item'));
     }
 
     public function update(Request $request, Item $item, Module $module)
@@ -49,12 +49,12 @@ class ModuleController extends Controller
         ]);
         $data = $request->all();
         $module->update($data);
-        return redirect()->route('instructor.courses.index');
+        return redirect()->back()->with('message', 'Module Updated Successfully');
     }
 
     public function destroy(Item $item, Module $module)
     {
         $module->delete();
-        return redirect()->route('instructor.courses.index');
+        return redirect()->back()->with('message', 'Module Deleted Successfully');
     }
 }

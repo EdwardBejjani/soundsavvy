@@ -21,13 +21,12 @@ New Product - Vendor Dashboard
                     <label for="sku">Product SKU</label>
                 </div>
                 <div class="form-floating mb-3">
-                    <select name="category_id" id="category_id">
-                        <option value=""></option>
+                    <select name="category_id" id="category_id" class="form-select input">
+                        <option select disabled>Product Category</option>
                         @foreach ($categories as $category)
                         <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
-                    <label for="price">Product Category</label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="number" class="form-control input" id="price" name="price" placeholder="Product Price">

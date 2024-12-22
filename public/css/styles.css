@@ -431,6 +431,32 @@ footer a:hover {
     padding-bottom: 10px !important;
 }
 
+.card-title {
+    color: white;
+    transition: all 0.3s ease-in-out;
+}
+
+.card-title:hover {
+    color: var(--primary-purple);
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-del {
+    background-color: var(--dark-bg);
+    border: rgb(209, 44, 44) solid 2px;
+    box-shadow: 0 5px 15px rgba(209, 44, 44, 0.7);
+    font-weight: 600;
+    transition: all 0.3s ease-in-out;
+}
+
+.btn-del:hover {
+    color: rgb(209, 44, 44);
+    background-color: rgb(49, 2, 2);
+    border-color: rgb(145, 20, 20);
+    box-shadow: 0 10px 20px rgba(145, 20, 20, 0.7);
+    transition: all 0.3s ease-in-out;
+}
+
 /* -----------------transitions---------------- */
 
 .animate-on-scroll {

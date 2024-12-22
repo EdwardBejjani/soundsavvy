@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Module;
 use App\Models\Item;
+use App\Models\Module;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -43,18 +44,20 @@ class CourseController extends Controller
 
     public function new()
     {
-        return view('dashboard.instructor.courses.new');
+        $categories = Category::all();
+        return view('dashboard.instructor.courses.new', compact('categories'));
     }
 
     public function create(Request $request)
     {
         $request->validate([
-            'title' => 'required | min:3 | max:50',
+            'name' => 'required | min:3 | max:50',
+            'type' => 'required',
             'description' => 'required | min:10 | max:300',
             'image' => 'required',
             'price' => 'required | min:1',
             'category_id' => 'required | exists:categories,id',
-            'SKU' => 'required',
+            'sku' => 'required',
         ]);
         if ($request->file('image')) {
             $path = $request->file('image')->store('images', 'public');
@@ -67,15 +70,16 @@ class CourseController extends Controller
 
     public function edit(Item $item)
     {
-        return view('dashboard.instructor.courses.edit', compact('item'));
+        $categories = Category::all();
+        return view('dashboard.instructor.courses.edit', compact('item', 'categories'));
     }
 
     public function update(Request $request, Item $item)
     {
         $request->validate([
-            'title' => 'required | min:3 | max:50',
+            'name' => 'required | min:3 | max:50',
             'description' => 'required | min:10 | max:300',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',,
+            'image' => 'nullable | image | mimes:jpeg,png,jpg,gif | max:2048',
             'price' => 'required | min:1',
             'category_id' => 'required | exists:categories,id',
             'sku' => 'required',

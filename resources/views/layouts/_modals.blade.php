@@ -56,7 +56,7 @@
                     <h6 class="mb-0 text-white">${item.name}</h6>
                     <small class="text-muted">price: $${item.price} | quantity: ${item.quantity}</small>
                 </div>
-                <button class="btn btn-sm btn-danger" onclick="removeFromCart(${index})">remove</button>
+                <button class="btn btn-sm btn-danger btn-del" onclick="removeFromCart(${index})">remove</button>
             `;
 
             cartItemsContainer.appendChild(cartItem);

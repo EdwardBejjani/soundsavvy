@@ -28,7 +28,7 @@ Orders - Admin Dashboard
                         <td class=" bg-dark text-white">
                             <!-- <a href="#" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a> -->
                             <a href="{{route('admin.orders.show', $order)}}" class="btn btn-primary me-2"><i class="fa-solid fa-eye"></i> View</a>
-                            <a href="{{route('admin.orders.refund', $order)}}" class="btn btn-danger me-2" onclick="return confirm('Are you sure you want to refund this order?')"><i class="fa-solid fa-arrow-rotate-left"></i> Refund</a>
+                            <a href="{{route('admin.orders.refund', $order)}}" class="btn btn-danger btn-del me-2" onclick="return confirm('Are you sure you want to refund this order?')"><i class="fa-solid fa-arrow-rotate-left"></i> Refund</a>
                         </td>
                     </tr>
                     @empty

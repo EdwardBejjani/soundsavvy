@@ -11,7 +11,7 @@ Product #: {{$item->id}} - Vendor Dashboard
             <div class="row">
                 <div class="col text-start px-5">
                     <p class="lead mb-3"><span class="fw-bold">Product ID:</span> {{ $item->id }}</p>
-                    <p class="lead mb-3"><span class="fw-bold">Vendor ID:</span> {{ $item->user_id }}</p>
+                    <p class="lead mb-3"><span class="fw-bold">Vendor Name:</span> {{ $item->user->name}}</p>
                     <p class="lead mb-3"><span class="fw-bold">Name:</span> {{ $item->name }}</p>
                     <p class="lead mb-3"><span class="fw-bold">Description:</span><br> {{ $item->description }}</p>
                     <p class="lead mb-3"><span class="fw-bold">SKU:</span> {{ $item->SKU }}</p>

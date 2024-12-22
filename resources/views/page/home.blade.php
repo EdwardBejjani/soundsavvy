@@ -17,7 +17,7 @@ Home
     <div class="py-5 container-fluid feature-overlay">
         <h2 class="text-center mb-5 feature-heading animate-on-scroll slide-up">All-In-One</h2>
         <div class="row g-4">
-            <div class="col-md-4 animate-on-scroll slide-left delay-200">
+            <div class="col-md-6 animate-on-scroll slide-left delay-200">
                 <div class="text-center">
                     <div class="feature-icon"><i class="fa-solid fa-music"></i></div>
                     <h3>Shop</h3>
@@ -28,7 +28,7 @@ Home
                     </p>
                 </div>
             </div>
-            <div class="col-md-4 animate-on-scroll slide-up delay-200">
+            <div class="col-md-6 animate-on-scroll slide-right delay-200">
                 <div class="text-center">
                     <div class="feature-icon"><i class="fa-solid fa-book"></i></div>
                     <h3>Learn</h3>
@@ -36,19 +36,6 @@ Home
                         Unlock your musical potential with our interactive learning
                         feature, offering personalized lessons, video tutorials, and
                         practice tools tailored to your skill level and interests.
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-4 animate-on-scroll slide-right delay-200">
-                <div class="text-center">
-                    <div class="feature-icon">
-                        <i class="fa-solid fa-comments"></i>
-                    </div>
-                    <h3>Chat</h3>
-                    <p class="px-5">
-                        Join the wave with our chat feature, where music enthusiasts can
-                        share tips, ask questions, and connect with fellow members in
-                        real time!
                     </p>
                 </div>
             </div>

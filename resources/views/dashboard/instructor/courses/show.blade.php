@@ -12,7 +12,7 @@ Course #: {{$item->id}} - Instructor Dashboard
                 <div class="row">
                     <div class="col text-start px-5">
                         <p class="lead mb-3"><span class="fw-bold">Course ID:</span> {{ $item->id }}</p>
-                        <p class="lead mb-3"><span class="fw-bold">Instructor ID:</span> {{ $item->user_id }}</p>
+                        <p class="lead mb-3"><span class="fw-bold">Instructor Name:</span> {{ $item->user->name }}</p>
                         <p class="lead mb-3"><span class="fw-bold">Name:</span> {{ $item->name }}</p>
                         <p class="lead mb-3"><span class="fw-bold">Description:</span><br> {{ $item->description }}</p>
                         <p class="lead mb-3"><span class="fw-bold">SKU:</span> {{ $item->SKU }}</p>
@@ -30,12 +30,22 @@ Course #: {{$item->id}} - Instructor Dashboard
                 </div>
                 <div class="row mt-2">
                     @foreach ($modules as $module)
-                    <a href="{{route('instructor.courses.modules.show', ['item'=>$item, 'module'=>$module])}}">
+                    <a href="{{route('instructor.courses.modules.show', ['item'=>$item, 'module'=>$module])}}" class="text-decoration-none">
                         <div class="col-12">
                             <div class="card h-100 db-btn">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{$module->title}}</h5>
-                                    <p class="card-text">{{$module->description}}</p>
+                                    <div class="d-flex justify-content-between align-items-center mb-3">
+                                        <h5 class="card-title">{{$module->title}}</h5>
+                                        <div class="d-flex">
+                                            <a href="{{route('instructor.courses.modules.edit', ['item'=>$item, 'module'=>$module])}}" class="btn btn-primary me-2"><i class="fa-solid fa-pencil"></i></a>
+                                            <form action="{{route('instructor.courses.modules.destroy', ['item'=>$item, 'module'=>$module])}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-del"><i class="fa-solid fa-trash"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <p>{{$module->description}}</p>
                                 </div>
                             </div>
                         </div>

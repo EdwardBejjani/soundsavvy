@@ -13,7 +13,7 @@ Learn
 </section>
 
 <section class="courses">
-    <h2>Featured Courses</h2>
+    <h2 class="text-center">Featured Courses</h2>
     <div class="course-grid">
         @forelse ($items as $item)
         <a href="{{route('course', $item)}}" class="text-decoration-none">
@@ -27,7 +27,7 @@ Learn
             </div>
         </a>
         @empty
-        <h2>No Courses Found</h2>
+        <h4 class="text-center">No Courses Found</h4>
         @endforelse
     </div>
 </section>

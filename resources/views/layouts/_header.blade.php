@@ -32,12 +32,6 @@
                 </li>
             </ul>
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="btn btn-primary nav-link px-3 py-3" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button"
-                        aria-controls="offcanvasCart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                    </a>
-                </li>
                 @auth()
                 <li class="nav-item">
                     <a class="btn btn-primary nav-link px-3 py-3 {{Route::is('profile') ? 'active': ''}}" title="Profile" href="{{Route('profile', Auth::user()->user_id)}}"><i class="fa-solid fa-user"></i></a>
@@ -70,6 +64,12 @@
                     <a class="btn btn-primary nav-link px-3 py-3" href="{{route('register')}}">REGISTER</a>
                 </li>
                 @endguest
+                <li class="nav-item">
+                    <a class="btn btn-primary nav-link px-3 py-3 ms-3" data-bs-toggle="offcanvas" href="#offcanvasCart" role="button"
+                        aria-controls="offcanvasCart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

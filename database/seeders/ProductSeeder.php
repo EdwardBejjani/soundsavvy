@@ -11,16 +11,5 @@ class ProductSeeder extends Seeder
     /**
      * Run the database seeds.
      */
-    public function run(): void
-    {
-        Item::create([
-            'user_id' => 2,
-            'type' => 'product',
-            'name' => 'Piano',
-            'description' => 'A beautiful piano',
-            'price' => 1000,
-            'SKU' => 'P001',
-            'category_id' => 1,
-        ]);
-    }
+    public function run(): void {}
 }

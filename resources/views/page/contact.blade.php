@@ -6,7 +6,7 @@ Contact Us
 <!-- Hero Section -->
 <section class="hero contact-bg">
     <div class="container hero-container text-center">
-        <a href="index.hmtl" class="animate-on-scroll slide-up"><img src="contact-page/contact-us.png" alt="Contact Us" /></a>
+        <a href="{{route('contact')}}" class="animate-on-scroll slide-up"><img src="contact-page/contact-us.png" alt="Contact Us" /></a>
         <p class="lead animate-on-scroll slide-up delay-200">We're here to help with any questions you may have</p>
     </div>
 </section>
@@ -16,22 +16,26 @@ Contact Us
     <div class="container">
         <div class="row g-4">
             <div class="col-md-6">
-                <div class="contact-info-card">
+                <div class="contact-info-card text-center">
                     <h2 class="mb-4 animate-on-scroll slide-left">Contact Information</h2>
                     <div class="mb-4 animate-on-scroll slide-left">
-                        <h5>Address</h5>
+                        <h5><i class="fa-solid fa-location-dot"></i> Address</h5>
                         <p>123 Music Street<br />Harmony City, HC 12345</p>
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
-                        <h5>Phone</h5>
-                        <p>(555) 123-4567</p>
+                        <h5><i class="fa-solid fa-phone"></i> Phone</h5>
+                        <a href="tel:+96170585121" class="text-decoration-none">
+                            <p class="text-white">(+961) 70 585 121</p>
+                        </a>
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
-                        <h5>Email</h5>
-                        <p>support@soundsavvy.com</p>
+                        <h5><i class="fa-solid fa-envelope"></i> Email</h5>
+                        <a href="mailto:support@soundsavvy.com" class="text-decoration-none">
+                            <p class="text-white">support@soundsavvy.com</p>
+                        </a>
                     </div>
                     <div class="mb-4 animate-on-scroll slide-left">
-                        <h5>Business Hours</h5>
+                        <h5><i class="fa-solid fa-clock"></i> Business Hours</h5>
                         <p>
                             Monday - Friday: 9:00 AM - 6:00 PM<br />
                             Saturday: 10:00 AM - 4:00 PM<br />
@@ -41,7 +45,7 @@ Contact Us
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="contact-info-card">
+                <div class="contact-info-card text-center">
                     <h2 class="mb-4 animate-on-scroll slide-right">Send us a Message</h2>
                     <form>
                         <div class="mb-3 animate-on-scroll slide-right">
