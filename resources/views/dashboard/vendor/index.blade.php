@@ -8,13 +8,11 @@ Vendor Dashboard
     <div class="container pt-5">
         <h1 class="text-center mt-5 text-shadow">Vendor Dashboard</h1>
         <div class="row gap-4 mt-5 justify-content-center">
-            <a href="{{route('vendor.products.index')}}" class="col-auto shadow rounded pt-4 pb-2 px-5 mb-3 text-center text-decoration-none db-btn">
+            <a href="{{route('vendor.products.index')}}" class="col-auto shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
                 <h3 class="font-semibold text-shadow">Your Products</h3>
-                <p class="text-2xl mt-2 text-shadow count-up  mb-1">24</p>
             </a>
-            <a href="{{route('vendor.orders.index')}}" class="col-auto shadow rounded pt-4 pb-2 px-5 mb-3 text-center text-decoration-none db-btn">
+            <a href="{{route('vendor.orders.index')}}" class="col-auto shadow rounded py-4 px-5 mb-3 text-center text-decoration-none db-btn">
                 <h3 class="font-semibold text-shadow">Total Orders</h3>
-                <p class="text-2xl mt-2 text-shadow count-up  mb-1">5746</p>
             </a>
         </div>
         <h1 class="text-center mt-5 text-shadow mb-3">Send an Email</h1>
